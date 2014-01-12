@@ -10,7 +10,7 @@ from collections import OrderedDict
 from django import template
 from django.conf import settings
 
-from application.utils import merge_settings
+from cerebrum.utils import merge_settings
 
 register = template.Library()
 
