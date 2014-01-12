@@ -46,6 +46,7 @@ for app in settings.INSTALLED_APPS:
                       'No module named admin.config'):
             pass
         else:
+            print "app failing: %s" % app
             raise ImportError(e)
     except AttributeError:
         pass
