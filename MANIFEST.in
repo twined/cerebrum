@@ -1,0 +1,2 @@
+include README.md
+recursive-include cerebrum *.py *.html *.js *.gif *.css

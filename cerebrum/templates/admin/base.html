@@ -1,0 +1,88 @@
+{% load compressed active %}
+{% load static from staticfiles %}
+{% load url from future %}
+{% load admin_tags %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // + {{ admin.site_url }} {{ admin.site_version }} - (c) {{ admin.site_name }} 2006 - 2014 - all rights reserved.
+  //   design and implementation by twined - http://www.twined.net // admin
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <meta charset="utf-8">
+    <title>{{ admin.site_name }} Admin // {% block title %}Velkommen!{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ admin.site_name }}">
+    <meta name="author" content="twined v2.0">
+
+    <!-- compressed & combined stylesheets -->
+    {% compressed_css 'admin' %}
+    {% block extra_head %}{% endblock %}
+    {% block css_extra %}{% endblock css_extra %}
+    {{ form.media }}
+    <!-- javascript calls -->
+    {% compressed_js 'admin' %}
+
+    {% block extra_js %}{% endblock extra_js %}
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- fav & touch icons -->
+    <link rel="shortcut icon" href="{% static 'ico/favicon.ico' %}">
+</head>
+
+<body>
+{% block navbar %}
+{% endblock navbar %}
+<div class="container">
+  {% block userinfo %}
+  <div class="row">
+    <div style="margin-bottom: 5px;" class="offset3 span9">
+      <h1>Billie Van</h1>
+    </div>
+    <div class="offset3 span9" style="font-size: 10px; text-transform: uppercase;">
+            // {% now 'j. F Y' %} // logget inn som <strong>{{ request.user }}</strong> // <a href="{% url 'admin:logout' %}">logg ut</a>
+    </div>
+  </div>
+  <hr />
+  {% endblock userinfo %}
+
+{% block messages %}
+<div class="container">
+  <div class="row">
+    <div class="offset3 span9">
+
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-block{% if message.tags %} {{ message.tags }}"{% endif %}>
+          <a class="close" data-dismiss="alert" href="#">×</a>
+          {{ message|safe }}
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock messages %}
+
+  <div class="row">
+    {% block nav %}
+      {% display_menu %}
+    {% endblock nav %}
+      <div class="content offset1 span9">
+      {% block content %}{% endblock content %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% block footer %}
+<div class="container">
+  <hr>
+</div>
+{% endblock footer %}
+  </body>
+</html>

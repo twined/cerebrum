@@ -1,0 +1,17 @@
+{% load active %}
+<div class="sidebar-nav span2">
+  <ul class="nav nav-list">
+{% for menu_header, menu_data in menu.items %}
+    <li class="nav-header">
+      {{ menu_header }}
+    </li>
+    {% for menu_item, menu_data in menu_data.items %}
+        <li class="{% active request menu_data.url %}">
+            <a href="{{ menu_data.url }}">
+                <i class="{{ menu_data.icon }}"></i> {{ menu_item }}
+            </a>
+        </li>
+    {% endfor %}
+{% endfor %}
+  </ul>
+</div>
