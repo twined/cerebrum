@@ -28,5 +28,5 @@ class CacheBustView(LoginRequiredMixin, View):
     """
 
     def get(self, request, *args, **kwargs):
-        cache.delete_pattern('billievan.*')
+        cache.delete_pattern('*')
         return HttpResponse('CACHE BUSTED!')
