@@ -27,7 +27,9 @@ for app in settings.INSTALLED_APPS:
     admin_urls_dotpath = '%s.admin.urls' % app
     try:
         module = __import__(admin_cfg_dotpath, fromlist=[None])
-        urlcfg = getattr(module, 'APP_ADMIN_URLS')
+        urlcfg = getattr(module, 'APP_ADMIN_URLS', '')
+        if not urlcfg:
+            continue
 
         urlpatterns += patterns(
             'admin',
@@ -48,5 +50,3 @@ for app in settings.INSTALLED_APPS:
         else:
             print "app failing: %s" % app
             raise ImportError(e)
-    except AttributeError:
-        pass
