@@ -15,13 +15,21 @@
     <meta name="description" content="{{ admin.site_name }}">
     <meta name="author" content="twined v2.0">
 
-    <!-- compressed & combined stylesheets -->
-    {% compressed_css 'admin' %}
+    <!-- stylesheets -->
+    <link href="/static/css/bootstrap2.css" rel="stylesheet" type="text/css" media="screen,projection" />
+    <link href="/static/css/admin.css" rel="stylesheet" type="text/css" media="screen,projection" />
+
     {% block extra_head %}{% endblock %}
     {% block css_extra %}{% endblock css_extra %}
+
+    <!-- javascript calls -->
+    <script type="text/javascript" src="/static/js/libs/jquery/jquery.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/js/libs/jquery/jquery-ui-1.10.0.custom.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/js/libs/bootstrap/bootstrap2.js" charset="utf-8"></script>
+
     {{ form.media }}
     <!-- javascript calls -->
-    {% compressed_js 'admin' %}
+
 
     {% block extra_js %}{% endblock extra_js %}
 
