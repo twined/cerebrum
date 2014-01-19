@@ -3,7 +3,7 @@
 {% load url from future %}
 {% load admin_tags %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="app">
   <head>
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // + {{ admin.site_url }} {{ admin.site_version }} - (c) {{ admin.site_name }} 2006 - 2014 - all rights reserved.
@@ -16,33 +16,141 @@
     <meta name="author" content="twined v2.0">
 
     <!-- stylesheets -->
-    <link href="/static/css/bootstrap2.css" rel="stylesheet" type="text/css" media="screen,projection" />
-    <link href="/static/css/admin.css" rel="stylesheet" type="text/css" media="screen,projection" />
+    <link rel="stylesheet" href="/static/admin/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="/static/admin/css/animate.css" type="text/css" />
+    <link rel="stylesheet" href="/static/admin/css/font-awesome.min.css" type="text/css" />
+    <link rel="stylesheet" href="/static/admin/css/font.css" type="text/css" />
+    <link rel="stylesheet" href="/static/admin/css/admin.css" type="text/css" />
+    <!--[if lt IE 9]>
+        <script src="/static/admin/js/ie/html5shiv.js"></script>
+        <script src="/static/admin/js/ie/respond.min.js"></script>
+        <script src="/static/admin/js/ie/excanvas.js"></script>
+    <![endif]-->
 
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Raleway:400,700|Open+Sans:400,500,600">
     {% block extra_head %}{% endblock %}
     {% block css_extra %}{% endblock css_extra %}
-
-    <!-- javascript calls -->
-    <script type="text/javascript" src="/static/js/libs/jquery/jquery.min.js" charset="utf-8"></script>
-    <script type="text/javascript" src="/static/js/libs/jquery/jquery-ui-1.10.0.custom.min.js" charset="utf-8"></script>
-    <script type="text/javascript" src="/static/js/libs/bootstrap/bootstrap2.js" charset="utf-8"></script>
 
     {{ form.media }}
     <!-- javascript calls -->
 
-
+    <script src="/static/admin/js/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="/static/admin/js/bootstrap.js"></script>
+    <!-- App -->
+    <script src="/static/admin/js/admin.js"></script>
+    <script src="/static/admin/js/admin.plugin.js"></script>
+    <script src="/static/admin/js/libs/slimscroll/jquery.slimscroll.min.js"></script>
     {% block extra_js %}{% endblock extra_js %}
-
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
 
     <!-- fav & touch icons -->
     <link rel="shortcut icon" href="{% static 'ico/favicon.ico' %}">
 </head>
 
+<body>
+
+  <section class="hbox stretch">
+
+    <!-- .aside -->
+    <aside class="bg-dark aside-md" id="nav">
+      <section class="vbox">
+        <header class="header dker navbar navbar-fixed-top-xs">
+              <div class="navbar-header">
+                <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen" data-target="#nav">
+                  <i class="fa fa-bars"></i>
+                </a>
+                <a href="#" class="navbar-brand" data-toggle="fullscreen">
+                  <img src="/static/admin/img/logo.png" class="m-r-sm">
+                  <span class="hidden-nav-xs">{{ admin.site_name }}</span>
+                </a>
+                <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".nav-user">
+                  <i class="fa fa-cog"></i>
+                </a>
+              </div>
+            </header>
+{% block userinfo %}
+            <section class="w-f scrollable">
+              <!-- nav -->
+              <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="7px" data-railOpacity="0.2">
+                <div class="clearfix wrapper bg-primary nav-user hidden-xs">
+                  <div class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      <span class="thumb-sm avatar pull-left m-r-sm">
+                        <img src="/static/admin/img/avatar_default.jpg">
+                      </span>
+                      <span class="hidden-nav-xs clear">
+                        <strong>{% if request.user.get_full_name %}{{ request.user.get_full_name }}{% else %}{{ request.user.username }}{% endif %}</strong> <b class="caret caret-white"></b>
+                        <span class="text-muted text-xs block">Administrator</span>
+                      </a>
+                    </a>
+                    <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                      <span class="arrow top hidden-nav-xs"></span>
+                      <li>
+                        <a href="#">Settings</a>
+                      </li>
+                      <li>
+                        <a href="profile.html">Profile</a>
+                      </li>
+                      <li class="divider"></li>
+                      <li>
+                        <a href="{% url 'admin:logout' %}" data-toggle="ajaxModal">Logout</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                {% display_menu %}
+                <!-- / nav -->
+              </div>
+              <!-- / nav -->
+            </section>
+{% endblock userinfo %}
+
+            <footer class="footer lt hidden-xs b-t b-dark">
+
+              <a href="#nav" data-toggle="class:nav-xs" class="pull-right btn btn-sm btn-dark btn-icon">
+                <i class="fa fa-angle-left text"></i>
+                <i class="fa fa-angle-right text-active"></i>
+              </a>
+            </footer>
+      </section>
+    </aside>
+    <!-- /.aside -->
+
+    <section id="content">
+      <section class="vbox">
+        <section>
+          <section class="hbox stretch">
+            <section class="scrollable padder">
+              <ul class="wrapper breadcrumb no-border no-radius b-b b-light pull-in">
+{% block breadcrumbs %}
+                <li><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
+                <li><a href="#">UI kit</a></li>
+                <li><a href="#">Form</a></li>
+                <li class="active">Elements</li>
+{% endblock breadcrumbs %}
+              </ul>
+              <div class="row wrapper">
+                <div class="col-sm-12">
+{% block content %}
+
+{% endblock content %}
+                </div>
+              </div>
+            </section>
+          </section>
+        </section>
+      <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a>
+    </section>
+
+
+</body>
+</html>
+
+
+
+
+
+{% comment %}
 <body>
 {% block navbar %}
 {% endblock navbar %}
@@ -95,3 +203,4 @@
 {% endblock footer %}
   </body>
 </html>
+{% endcomment %}
