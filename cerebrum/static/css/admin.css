@@ -23,12 +23,6 @@
   src: local('Open Sans Bold'), local('OpenSans-Bold'), url(http://themes.googleusercontent.com/static/fonts/opensans/v6/k3k702ZOKiLJc3WVjuplzKRDOzjiPcYnFooOUGCOsRk.woff) format('woff');
 }
 @font-face {
-  font-family: 'Crimson Text';
-  font-style: italic;
-  font-weight: 400;
-  src: local('Crimson Text Italic'), local('CrimsonText-Italic'), url(http://themes.googleusercontent.com/static/fonts/crimsontext/v3/a5QZnvmn5amyNI-t2BMkWL52ooqJRs02xO3mONBoqeI.woff) format('woff');
-}
-@font-face {
   font-family: 'Source Sans Pro';
   font-style: normal;
   font-weight: 400;
@@ -46,13 +40,7 @@
   font-weight: 700;
   src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), url(http://themes.googleusercontent.com/static/fonts/sourcesanspro/v5/toadOcfmlt9b38dHJxOBGIqjGYJUyOXcBwUQbRaNH6c.woff) format('woff');
 }
-/*@sansFontFamily:        "Ubuntu", "Helvetica Neue", Helvetica, Arial, sans-serif;
-@baseFontSize:          14px;
-@baseLineHeight:        23px;
-@linkColorBright:       #ea0000;
-@linkColor:             darken(@linkColorBright, 15%);
-@navLinkColor:          darken(@linkColorBright, 15%);
-*/
+
 .stats dl {
   border-top: 1px solid #ddd;
   margin-top: 0;
@@ -553,8 +541,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Crimson Text";
-  font-style: italic;
+  font-family: "Raleway";
+  font-weight: 200;
 }
 body,
 input,
