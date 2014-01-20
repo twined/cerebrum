@@ -33,13 +33,23 @@ def display_menu(context):
             pass
 
     # sort the dict
+    #import ipdb; ipdb.set_trace()
     for key, menu_subitem in merged_menu.items():
-        merged_menu[key] = OrderedDict(
+        merged_menu[key]['menu'] = OrderedDict(
             sorted(
-                menu_subitem.items(),
+                menu_subitem['menu'].items()
+                if 'menu' in menu_subitem else menu_subitem.items(),
                 key=lambda item: item[1]['order']
             )
         )
+        merged_menu[key]['config'] = {
+            'bgcolor': menu_subitem['bgcolor']
+            if 'bgcolor' in menu_subitem else '#333333',
+            'icon': menu_subitem['icon']
+            if 'icon' in menu_subitem else 'fa fa-columns icon',
+            'anchor': menu_subitem['anchor']
+            if 'anchor' in menu_subitem else 'anchor'
+        }
     merged_menu = OrderedDict(sorted(merged_menu.items(), key=lambda t: t[0]))
 
     return {
