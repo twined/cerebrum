@@ -5,7 +5,7 @@
     <li class="nav-header">
       {{ menu_header }}
     </li>
-    {% for menu_item, menu_data in menu_data.items %}
+    {% for menu_item, menu_data in menu_data.menu.items %}
         <li class="{% active request menu_data.url %}">
             <a href="{{ menu_data.url }}">
                 <i class="{{ menu_data.icon }}"></i> {{ menu_item }}
