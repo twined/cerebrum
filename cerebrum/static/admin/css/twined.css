@@ -634,3 +634,9 @@ h3.section {
 .bg-userinfo .text-muted {
   color: #d0ebd6 !important;
 }
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
