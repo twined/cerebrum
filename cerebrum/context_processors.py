@@ -21,5 +21,6 @@ def admin(request):
         )
     return {'admin': cfg}
 
+
 def date_now(request):
     return {'date_now': datetime.datetime.now()}
