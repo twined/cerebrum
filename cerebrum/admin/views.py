@@ -5,9 +5,12 @@
 # (c) Twined/Univers 2009-2014. All rights reserved.
 # ----------------------------------------------------------------------
 
+from django.contrib import messages
 from django.core.cache import cache
-from django.http import HttpResponse
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView, View
+
 from ..views import LoginRequiredMixin
 
 
@@ -29,4 +32,9 @@ class CacheBustView(LoginRequiredMixin, View):
 
     def get(self, request, *args, **kwargs):
         cache.delete_pattern('*')
-        return HttpResponse('CACHE BUSTED!')
+        messages.success(
+            self.request,
+            'Cachen er slettet!',
+            extra_tags='msg'
+        )
+        return HttpResponseRedirect(reverse('admin:dashboard'))
