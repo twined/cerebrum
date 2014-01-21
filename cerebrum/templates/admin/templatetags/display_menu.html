@@ -1,17 +1,60 @@
 {% load active %}
+{% comment %}
+
+
 <div class="sidebar-nav span2">
   <ul class="nav nav-list">
 {% for menu_header, menu_data in menu.items %}
     <li class="nav-header">
-      {{ menu_header }}
+      {{ menu_header }} - {{ menu_data.config.bgcolor }}
     </li>
     {% for menu_item, menu_data in menu_data.menu.items %}
+<<<<<<< HEAD
+=======
+      {% if True %}
+>>>>>>> refs/heads/v2.0
         <li class="{% active request menu_data.url %}">
             <a href="{{ menu_data.url }}">
                 <i class="{{ menu_data.icon }}"></i> {{ menu_item }}
             </a>
         </li>
+      {% endif %}
     {% endfor %}
 {% endfor %}
   </ul>
 </div>
+{% endcomment %}
+
+<!-- nav -->
+<nav class="nav-primary hidden-xs">
+  <ul class="nav">
+{% for menu_header, menu_data in menu.items %}
+    <li class="menuparent">
+      <a href="#{{ menu_data.config.anchor }}">
+        <i class="{{ menu_data.config.icon }}">
+          <b style="background-color: {{ menu_data.config.bgcolor }};"></b> <!-- class="bg-warning" -->
+        </i>
+        <span class="pull-right">
+          <i class="fa fa-angle-down text"></i>
+          <i class="fa fa-angle-up text-active"></i>
+        </span>
+        <span>{{ menu_header }}</span>
+      </a>
+      <ul class="nav lt">
+  {% for menu_item, menu_data in menu_data.menu.items %}
+        <li class="menuitem {% active request menu_data.url %}">
+          <a href="{{ menu_data.url }}" class="{% active request menu_data.url %}">
+            <i class="fa fa-angle-right"></i>
+            <span>{{ menu_item }}</span>
+          </a>
+        </li>
+  {% endfor %}
+      </ul>
+    </li>
+{% endfor %}
+  </ul>
+</nav>
+<script>
+  // open the submenu.
+  $('.menuitem.active').parent().parent().addClass('active');
+</script>
