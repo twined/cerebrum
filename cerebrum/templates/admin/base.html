@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="/static/admin/css/font-awesome.min.css" type="text/css" />
     <link rel="stylesheet" href="/static/admin/css/font.css" type="text/css" />
     <link rel="stylesheet" href="/static/admin/css/admin.css" type="text/css" />
+    <link rel="stylesheet" href="/static/admin/css/twined.css" type="text/css" />
     <!--[if lt IE 9]>
         <script src="/static/admin/js/ie/html5shiv.js"></script>
         <script src="/static/admin/js/ie/respond.min.js"></script>
@@ -33,9 +34,9 @@
     {{ form.media }}
     <!-- javascript calls -->
 
-    <script src="/static/admin/js/jquery.min.js"></script>
+    <script src="/static/admin/js/libs/jquery/jquery.min.js"></script>
     <!-- Bootstrap -->
-    <script src="/static/admin/js/bootstrap.js"></script>
+    <script src="/static/admin/js/libs/bootstrap/bootstrap.js"></script>
     <!-- App -->
     <script src="/static/admin/js/admin.js"></script>
     <script src="/static/admin/js/admin.plugin.js"></script>
@@ -53,96 +54,112 @@
     <!-- .aside -->
     <aside class="bg-dark aside-md" id="nav">
       <section class="vbox">
-        <header class="header dker navbar navbar-fixed-top-xs">
-              <div class="navbar-header">
-                <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen" data-target="#nav">
-                  <i class="fa fa-bars"></i>
-                </a>
-                <a href="#" class="navbar-brand" data-toggle="fullscreen">
-                  <img src="/static/admin/img/logo.png" class="m-r-sm">
-                  <span class="hidden-nav-xs">{{ admin.site_name }}</span>
-                </a>
-                <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".nav-user">
-                  <i class="fa fa-cog"></i>
-                </a>
-              </div>
-            </header>
+        <header class="header navbar navbar-fixed-top-xs">
+          <div class="navbar-header">
+            <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen" data-target="#nav">
+              <i class="fa fa-bars"></i>
+            </a>
+            <a href="#" class="navbar-brand" data-toggle="fullscreen">
+              <img alt="logo" src="/static/admin/img/logo.png" class="m-r-sm">
+              <span class="hidden-nav-xs">{{ admin.site_name }}</span>
+            </a>
+            <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".nav-user">
+              <i class="fa fa-cog"></i>
+            </a>
+          </div>
+        </header>
+
 {% block userinfo %}
-            <section class="w-f scrollable">
-              <!-- nav -->
-              <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="7px" data-railOpacity="0.2">
-                <div class="clearfix wrapper bg-primary nav-user hidden-xs">
-                  <div class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                      <span class="thumb-sm avatar pull-left m-r-sm">
-                        <img src="/static/admin/img/avatar_default.jpg">
-                      </span>
-                      <span class="hidden-nav-xs clear">
-                        <strong>{% if request.user.get_full_name %}{{ request.user.get_full_name }}{% else %}{{ request.user.username }}{% endif %}</strong> <b class="caret caret-white"></b>
-                        <span class="text-muted text-xs block">Administrator</span>
-                      </a>
-                    </a>
-                    <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                      <span class="arrow top hidden-nav-xs"></span>
-                      <li>
-                        <a href="#">Settings</a>
-                      </li>
-                      <li>
-                        <a href="profile.html">Profile</a>
-                      </li>
-                      <li class="divider"></li>
-                      <li>
-                        <a href="{% url 'admin:logout' %}" data-toggle="ajaxModal">Logout</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                {% display_menu %}
-                <!-- / nav -->
+        <section class="w-f scrollable">
+          <!-- nav -->
+          <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="7px" data-railOpacity="0.2">
+            <div class="clearfix wrapper bg-black nav-user hidden-xs">
+              <div class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <span class="thumb-sm avatar pull-left m-r-sm">
+                    <img alt="avatar" src="/static/admin/img/avatar_default.jpg">
+                  </span>
+                  <span class="hidden-nav-xs clear font-shadow">
+                    <strong>{% if request.user.get_full_name %}{{ request.user.get_full_name }}{% else %}{{ request.user.username }}{% endif %}</strong> <b class="caret caret-white"></b>
+                    <span class="text-muted text-xs block font-bold">Administrator</span>
+                  </span>
+                </a>
+                <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                  <span class="arrow top hidden-nav-xs"></span>
+{% comment %}
+                  <li>
+                    <a href="#">Settings</a>
+                  </li>
+                  <li>
+                    <a href="profile.html">Profile</a>
+                  </li>
+                  <li class="divider"></li>
+{% endcomment %}
+                  <li>
+                    <a href="{% url 'admin:logout' %}">Logg ut</a>
+                  </li>
+                </ul>
               </div>
-              <!-- / nav -->
-            </section>
+            </div>
+
+            {% display_menu %}
+            <!-- / nav -->
+          </div>
+          <!-- / nav -->
+        </section>
 {% endblock userinfo %}
-
-            <footer class="footer lt hidden-xs b-t b-dark">
-
-              <a href="#nav" data-toggle="class:nav-xs" class="pull-right btn btn-sm btn-dark btn-icon">
-                <i class="fa fa-angle-left text"></i>
-                <i class="fa fa-angle-right text-active"></i>
-              </a>
-            </footer>
+        <footer class="footer lt hidden-xs b-t b-dark">
+          <a href="#nav" data-toggle="class:nav-xs" class="pull-right btn btn-sm btn-dark btn-icon">
+            <i class="fa fa-angle-left text"></i>
+            <i class="fa fa-angle-right text-active"></i>
+          </a>
+        </footer>
       </section>
     </aside>
     <!-- /.aside -->
 
+    <!-- content -->
     <section id="content">
       <section class="vbox">
         <section>
           <section class="hbox stretch">
-            <section class="scrollable padder">
-              <ul class="wrapper breadcrumb no-border no-radius b-b b-light pull-in">
-{% block breadcrumbs %}
-                <li><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
-                <li><a href="#">UI kit</a></li>
-                <li><a href="#">Form</a></li>
-                <li class="active">Elements</li>
-{% endblock breadcrumbs %}
-              </ul>
-              <div class="row wrapper">
-                <div class="col-sm-12">
-{% block content %}
-
-{% endblock content %}
-                </div>
-              </div>
+            <section>
+              <section class="vbox">
+                <!-- <section class="scrollable"> -->
+                <header class="header bg-white b-b b-light">
+                  <ul class="breadcrumb no-border no-radius">
+  {% block breadcrumbs %}
+                    <li><a href="{% url 'admin:dashboard' %}"><i class="fa fa-home m-r-sm"></i> Hjem</a></li>
+  {% endblock breadcrumbs %}
+                  </ul>
+                </header>
+                <section id="maincontent" class="scrollable wrapper">
+                  {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-block{% if message.tags %} {{ message.tags }}"{% endif %}>
+                      <a class="close" data-dismiss="alert" href="#">×</a>
+                      {{ message|safe }}
+                    </div>
+                    {% endfor %}
+                  {% endif %}
+                  <!--<div class="col-sm-12">-->
+  {% block content %}
+  {% endblock content %}
+                  <!--</div>-->
+                </section>
+                <footer class="footer bg-white b-t b-light">
+                  <p>
+                    &copy; twined/univers 2009-{% now "Y" %}. All rights reserved.
+                  </p>
+                </footer>
+              </section>
             </section>
           </section>
         </section>
-      <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a>
+        <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a>
+      </section>
     </section>
-
-
+  </section>
 </body>
 </html>
 

@@ -1,3 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-dark">
+<head>
+  <meta charset="utf-8" />
+  <title>{{ admin.site_name }} | admin login</title>
+  <meta name="description" content="admin" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <!-- stylesheets -->
+  <link rel="stylesheet" href="/static/admin/css/bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="/static/admin/css/animate.css" type="text/css" />
+  <link rel="stylesheet" href="/static/admin/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="/static/admin/css/font.css" type="text/css" />
+  <link rel="stylesheet" href="/static/admin/css/admin.css" type="text/css" />
+  <link rel="stylesheet" href="/static/admin/css/twined.css" type="text/css" />
+  <!--[if lt IE 9]>
+      <script src="/static/admin/js/ie/html5shiv.js"></script>
+      <script src="/static/admin/js/ie/respond.min.js"></script>
+      <script src="/static/admin/js/ie/excanvas.js"></script>
+  <![endif]-->
+
+  <script src="/static/admin/js/libs/jquery/jquery.min.js"></script>
+  <script src="/static/admin/js/libs/bootstrap/bootstrap.js"></script>
+  <script src="/static/admin/js/admin.js"></script>
+  <script src="/static/admin/js/admin.plugin.js"></script>
+  <script src="/static/admin/js/libs/slimscroll/jquery.slimscroll.min.js"></script>
+
+</head>
+<body>
+  <section id="content" class="m-t-lg wrapper-md animated fadeInUp">
+    <div class="container aside-xxl">
+      <a class="navbar-brand block" href="index.html"><img src="/static/admin/img/twined-logo-wh.png" /></a>
+      {% if form.errors %}
+        <div class="alert alert-danger"><span class="font-bold">Innloggingen mislyktes.</span></div>
+      {% endif %}
+      <section class="panel panel-default bg-white m-t-lg">
+        <header class="panel-heading text-center">
+          <strong>{{ admin.site_name }}</strong>
+        </header>
+        <form method="post" action="{% url 'admin:login' %}" class="panel-body wrapper-lg">
+          {% csrf_token %}
+          <div class="form-group">
+            <label class="control-label">Brukernavn</label>
+            <input name="username" id="id_username" type="text" placeholder="Brukernavn" class="form-control input-lg">
+          </div>
+          <div class="form-group">
+            <label class="control-label">Passord</label>
+            <input type="password" name="password" id="id_password" placeholder="Passord" class="form-control input-lg">
+          </div>
+          <button type="submit" class="btn btn-primary btn-block btn-lg m-t-lg">Logg inn</button>
+          <input type="hidden" name="next" value="{{ next }}" />
+        </form>
+      </section>
+    </div>
+  </section>
+  <!-- footer -->
+  <footer id="footer">
+    <div class="text-center text-white text-muted padder">
+      <p>
+        <small>&copy; twined/univers 2009-{% now "Y" %}</small>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
+{% comment %}
 {% extends "admin/base.html" %}
 {% load url from future %}
 
@@ -36,3 +101,4 @@
 
 {% block footer %}
 {% endblock %}
+{% endcomment %}
