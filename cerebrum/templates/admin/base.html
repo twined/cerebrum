@@ -77,7 +77,11 @@
               <div class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <span class="thumb-sm avatar pull-left m-r-sm">
-                    <img alt="avatar" src="/static/admin/img/avatar_default.jpg">
+                    {% if request.user.profile.avatar %}
+                      <img alt="avatar" src="{{ request.user.profile.avatar.url }}">
+                    {% else %}
+                      <img alt="avatar" src="/static/admin/img/avatar_default.jpg">
+                    {% endif %}
                   </span>
                   <span class="hidden-nav-xs clear font-shadow">
                     <strong>{% if request.user.get_full_name %}{{ request.user.get_full_name }}{% else %}{{ request.user.username }}{% endif %}</strong> <b class="caret caret-white"></b>
