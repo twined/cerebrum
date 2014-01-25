@@ -3240,3 +3240,27 @@ fieldset[disabled] .btn-gplus.active {
     display: inherit !important;
   }
 }
+
+.flag {
+  width: 16px;
+  height: 11px;
+  background:url(/static/admin/img/flags.png) no-repeat;
+  padding-bottom: 15px;
+  padding-right: 20px;
+}
+
+.flag.flag-nb {background-position: -16px 0}
+.flag.flag-en {background-position: 0 -11px}
+
+.lang-menu {
+  padding:10px;
+}
+
+.lang-menu li {
+  padding: 5px 0;
+}
+
+.lang-menu li img {
+  padding-right: 25px;
+}
+

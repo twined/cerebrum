@@ -1,7 +1,9 @@
+{% load i18n %}
 {% load compressed active %}
 {% load static from staticfiles %}
 {% load url from future %}
 {% load admin_tags %}
+{% get_current_language as LANGUAGE_CODE %}
 <!DOCTYPE html>
 <html lang="en" class="app">
   <head>
@@ -90,15 +92,6 @@
                 </a>
                 <ul class="dropdown-menu animated fadeInRight m-t-xs">
                   <span class="arrow top hidden-nav-xs"></span>
-{% comment %}
-                  <li>
-                    <a href="#">Settings</a>
-                  </li>
-                  <li>
-                    <a href="profile.html">Profile</a>
-                  </li>
-                  <li class="divider"></li>
-{% endcomment %}
                   <li>
                     <a href="{% url 'admin:logout' %}">Logg ut</a>
                   </li>
@@ -164,64 +157,6 @@
       </section>
     </section>
   </section>
+  <!-- language: {{ LANGUAGE_CODE}} -->
 </body>
 </html>
-
-
-
-
-
-{% comment %}
-<body>
-{% block navbar %}
-{% endblock navbar %}
-<div class="container">
-  {% block userinfo %}
-  <div class="row">
-    <div style="margin-bottom: 5px;" class="offset3 span9">
-      <h1>{{ admin.site_name }}</h1>
-    </div>
-    <div class="offset3 span9" style="font-size: 10px; text-transform: uppercase;">
-            // {% now 'j. F Y' %} // logget inn som <strong>{{ request.user }}</strong> // <a href="{% url 'admin:logout' %}">logg ut</a>
-    </div>
-  </div>
-  <hr />
-  {% endblock userinfo %}
-
-{% block messages %}
-<div class="container">
-  <div class="row">
-    <div class="offset3 span9">
-
-        {% if messages %}
-        {% for message in messages %}
-        <div class="alert alert-block{% if message.tags %} {{ message.tags }}"{% endif %}>
-          <a class="close" data-dismiss="alert" href="#">×</a>
-          {{ message|safe }}
-        </div>
-        {% endfor %}
-        {% endif %}
-    </div>
-  </div>
-</div>
-{% endblock messages %}
-
-  <div class="row">
-    {% block nav %}
-      {% display_menu %}
-    {% endblock nav %}
-      <div class="content offset1 span9">
-      {% block content %}{% endblock content %}
-      </div>
-    </div>
-  </div>
-</div>
-
-{% block footer %}
-<div class="container">
-  <hr>
-</div>
-{% endblock footer %}
-  </body>
-</html>
-{% endcomment %}
