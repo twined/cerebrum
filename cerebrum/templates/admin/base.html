@@ -35,11 +35,8 @@
 
     {{ form.media }}
     <!-- javascript calls -->
-
     <script src="/static/admin/js/libs/jquery/jquery.min.js"></script>
-    <!-- Bootstrap -->
     <script src="/static/admin/js/libs/bootstrap/bootstrap.js"></script>
-    <!-- App -->
     <script src="/static/admin/js/admin.js"></script>
     <script src="/static/admin/js/admin.plugin.js"></script>
     <script src="/static/admin/js/libs/slimscroll/jquery.slimscroll.min.js"></script>
@@ -47,46 +44,48 @@
 
     <!-- fav & touch icons -->
     <link rel="shortcut icon" href="{% static 'ico/favicon.ico' %}">
+    <script type="text/javascript" src="//use.typekit.net/fdy0xrr.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 </head>
 
 <body>
 
   <section class="hbox stretch">
 
-    <!-- .aside -->
-    <aside class="bg-dark aside-md" id="nav">
+    <!-- .aside // menu -->
+    <aside class="bg-light lter aside-md" id="nav" style="border-top: 4px solid #FBA026;"> <!-- had b-r -->
       <section class="vbox">
-        <header class="header navbar bg-dark dker navbar-fixed-top-xs">
-          <div class="navbar-header">
-            <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen" data-target="#nav">
-              <i class="fa fa-bars"></i>
-            </a>
-            <a href="#" class="navbar-brand" data-toggle="fullscreen">
-              <img alt="logo" src="/static/admin/img/logo.png" class="m-r-sm">
-              <span class="hidden-nav-xs">{{ admin.site_name }}</span>
-            </a>
-            <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".nav-user">
-              <i class="fa fa-cog"></i>
-            </a>
-          </div>
-        </header>
-
+        <!-- mobile nav -->
+        <div class="visible-xs header">
+          <header class="header navbar bg-white b-b navbar-fixed-top-xs">
+            <div class="navbar-header clearfix">
+              <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen" data-target="#nav">
+                <i class="fa fa-bars"></i>
+              </a>
+              <a href="#" class="navbar-brand" data-toggle="fullscreen">
+              </a>
+              <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".nav-user">
+                <i class="fa fa-cog"></i>
+              </a>
+            </div>
+          </header>
+        </div>
 {% block userinfo %}
-        <section class="w-f scrollable">
+        <section class="w-f scrollable b-r">
           <!-- nav -->
           <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="7px" data-railOpacity="0.2">
-            <div class="clearfix wrapper bg-dark dk nav-user hidden-xs">
-              <div class="dropdown">
+            <div class="clearfix wrapper bg-lighter nav-user hidden-xs">
+              <div class="dropdown text-center">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <span class="thumb-sm avatar pull-left m-r-sm">
+                  <span class="thumb-md avatar m-r-sm hidden-nav-xs">
                     {% if request.user.profile.avatar %}
                       <img alt="avatar" src="{{ request.user.profile.avatar.url }}">
                     {% else %}
                       <img alt="avatar" src="/static/admin/img/avatar_default.jpg">
                     {% endif %}
                   </span>
-                  <span class="hidden-nav-xs clear font-shadow">
-                    <strong>{% if request.user.get_full_name %}{{ request.user.get_full_name }}{% else %}{{ request.user.username }}{% endif %}</strong> <b class="caret caret-white"></b>
+                  <span class="hidden-nav-xs m-t-xs clear">
+                    <strong>{% if request.user.get_full_name %}{{ request.user.get_full_name }}{% else %}{{ request.user.username }}{% endif %}</strong> <b class="caret"></b>
                     <span class="text-muted text-xs block font-bold">Administrator</span>
                   </span>
                 </a>
@@ -105,8 +104,8 @@
           <!-- / nav -->
         </section>
 {% endblock userinfo %}
-        <footer class="footer lt hidden-xs b-t b-dark">
-          <a href="#nav" data-toggle="class:nav-xs" class="pull-right btn btn-sm btn-dark btn-icon">
+        <footer class="footer lter hidden-xs b-t b-r">
+          <a href="#nav" data-toggle="class:nav-xs" class="pull-right btn btn-sm btn-primary btn-icon">
             <i class="fa fa-angle-left text"></i>
             <i class="fa fa-angle-right text-active"></i>
           </a>
@@ -116,19 +115,17 @@
     <!-- /.aside -->
 
     <!-- content -->
-    <section id="content">
+    <section id="content" style="border-top: 4px solid #FFD296;">
       <section class="vbox">
         <section>
           <section class="hbox stretch">
             <section>
               <section class="vbox">
                 <!-- <section class="scrollable"> -->
-                <header class="header bg-white b-b b-light">
-                  <ul class="breadcrumb no-border no-radius">
-  {% block breadcrumbs %}
-                    <li><a href="{% url 'admin:dashboard' %}"><i class="fa fa-home m-r-sm"></i> Hjem</a></li>
-  {% endblock breadcrumbs %}
-                  </ul>
+                {% comment %}
+                <header class="header bg-white b-b">
+                {% endcomment %}
+
                 </header>
                 <section id="maincontent" class="scrollable wrapper">
                   {% if messages %}

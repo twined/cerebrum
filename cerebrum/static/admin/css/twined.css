@@ -1,46 +1,3 @@
-@font-face {
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 300;
-  src: local('Open Sans Light'), local('OpenSans-Light'), url(http://themes.googleusercontent.com/static/fonts/opensans/v6/DXI1ORHCpsQm3Vp6mXoaTaRDOzjiPcYnFooOUGCOsRk.woff) format('woff');
-}
-@font-face {
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Open Sans'), local('OpenSans'), url(http://themes.googleusercontent.com/static/fonts/opensans/v6/cJZKeOuBrn4kERxqtaUH3bO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
-}
-@font-face {
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 600;
-  src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url(http://themes.googleusercontent.com/static/fonts/opensans/v6/MTP_ySUJH_bn48VBG8sNSqRDOzjiPcYnFooOUGCOsRk.woff) format('woff');
-}
-@font-face {
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Open Sans Bold'), local('OpenSans-Bold'), url(http://themes.googleusercontent.com/static/fonts/opensans/v6/k3k702ZOKiLJc3WVjuplzKRDOzjiPcYnFooOUGCOsRk.woff) format('woff');
-}
-@font-face {
-  font-family: 'Source Sans Pro';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Source Sans Pro'), local('SourceSansPro-Regular'), url(http://themes.googleusercontent.com/static/fonts/sourcesanspro/v5/ODelI1aHBYDBqgeIAH2zlNHq-FFgoDNV3GTKpHwuvtI.woff) format('woff');
-}
-@font-face {
-  font-family: 'Source Sans Pro';
-  font-style: normal;
-  font-weight: 600;
-  src: local('Source Sans Pro Semibold'), local('SourceSansPro-Semibold'), url(http://themes.googleusercontent.com/static/fonts/sourcesanspro/v5/toadOcfmlt9b38dHJxOBGCmgpmuQqK2I-L2S9cF65Ek.woff) format('woff');
-}
-@font-face {
-  font-family: 'Source Sans Pro';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), url(http://themes.googleusercontent.com/static/fonts/sourcesanspro/v5/toadOcfmlt9b38dHJxOBGIqjGYJUyOXcBwUQbRaNH6c.woff) format('woff');
-}
-
 html {
   background-color: #F7F7F7;
 }
@@ -119,7 +76,7 @@ form input[type="search"],
 form input[type="tel"],
 form input[type="color"],
 .uneditable-input {
-  font-family: Source Sans Pro;
+  font-family: "ff-meta-web-pro";
   /*padding: 20px 10px;*/
 }
 .form-sidebar textarea,
@@ -141,7 +98,7 @@ form input[type="color"],
   width: 100%;
 }
 form textarea {
-  font-family: Source Sans Pro;
+  font-family: "ff-meta-web-pro";
 }
 .sidebar-nav {
   padding: 5px;
@@ -155,7 +112,7 @@ form textarea {
   padding: 15px;
   margin: 15px 0;
   margin-top: 50px;
-  font-family: "Open Sans";
+  font-family: "ff-meta-serif-web-pro";
 }
 #showdown .i-imgin.small.left {
   width: 200px;
@@ -282,7 +239,7 @@ p.lead {
 }
 .post-body p,
 .campaign-body p {
-  font-family: "Open Sans";
+  font-family: "ff-meta-serif-web-pro";
   font-weight: 300;
   font-size: 15px;
   line-height: 29px;
@@ -317,7 +274,7 @@ p.lead {
 .fileitem .filename {
   float: left;
   width: 350px;
-  font-family: "Open Sans";
+  font-family: "ff-meta-web-pro";
   font-weight: 600;
   font-size: 14px;
   color: #333;
@@ -326,14 +283,14 @@ p.lead {
 .fileitem .filesize {
   float: left;
   line-height: 27px;
-  font-family: Open Sans;
+  font-family: "ff-meta-web-pro";
   font-size: 12px;
   width: 130px;
 }
 .fileitem .filestatus {
   float: left;
   line-height: 27px;
-  font-family: Open Sans;
+  font-family: "ff-meta-web-pro";
   font-size: 12px;
 }
 #login input[type="text"],
@@ -530,7 +487,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Raleway";
+  font-family: "ff-meta-serif-web-pro";
   font-weight: 700;
 }
 body,
@@ -538,7 +495,7 @@ input,
 button,
 select,
 textarea {
-  font-family: "Source Sans Pro";
+  font-family: "ff-meta-web-pro";
   -webkit-font-smoothing: antialiased;
 }
 @media (min-width: 980px) and (max-width: 1199px) {
@@ -614,14 +571,6 @@ textarea {
 h3.section {
   margin-top: 0;
 }
-
-/*
-.panel .table-striped > thead th,
-.panel .table > thead th {
-  background-color: #D3D7DA;
-  border-right: 1px solid rgba(241, 241, 241, 0.21);
-}
-*/
 
 .bg-userinfo {
   background-color: #6293B4;

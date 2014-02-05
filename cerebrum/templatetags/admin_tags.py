@@ -11,6 +11,7 @@ from django import template
 from django.conf import settings
 
 from cerebrum.utils import merge_settings
+from cerebrum.settings import ADMIN_CONFIG
 
 register = template.Library()
 
@@ -43,14 +44,19 @@ def display_menu(context):
             )
         )
         merged_menu[key]['config'] = {
-            'bgcolor': menu_subitem['bgcolor']
-            if 'bgcolor' in menu_subitem else '#333333',
+            #'bgcolor': menu_subitem['bgcolor']
+            #if 'bgcolor' in menu_subitem else '#333333',
             'icon': menu_subitem['icon']
             if 'icon' in menu_subitem else 'fa fa-columns icon',
             'anchor': menu_subitem['anchor']
             if 'anchor' in menu_subitem else 'anchor'
         }
     merged_menu = OrderedDict(sorted(merged_menu.items(), key=lambda t: t[0]))
+    i = 0
+    colors = ADMIN_CONFIG['menu_colors']
+    for k, v in merged_menu.items():
+        v['bgcolor'] = colors[i]
+        i += 1
 
     return {
         'menu': merged_menu,

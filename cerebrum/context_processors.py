@@ -9,7 +9,7 @@
 import datetime
 
 from django.core.exceptions import ImproperlyConfigured
-from django.conf import settings
+from cerebrum import settings
 
 
 def admin(request):
@@ -19,6 +19,7 @@ def admin(request):
         raise ImproperlyConfigured(
             "'ADMIN_CONFIG' must be set in settings.py."
         )
+
     return {'admin': cfg}
 
 
