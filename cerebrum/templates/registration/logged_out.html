@@ -1,14 +1,97 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en" class="bg-success">
+<head>
+  <meta charset="utf-8" />
+  <title>Logget ut</title>
+  <meta name="description" content="admin" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <!-- stylesheets -->
+  <link rel="stylesheet" href="/static/admin/css/bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="/static/admin/css/animate.css" type="text/css" />
+  <link rel="stylesheet" href="/static/admin/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="/static/admin/css/font.css" type="text/css" />
+  <link rel="stylesheet" href="/static/admin/css/admin.css" type="text/css" />
+  <link rel="stylesheet" href="/static/admin/css/twined.css" type="text/css" />
+  <!--[if lt IE 9]>
+      <script src="/static/admin/js/ie/html5shiv.js"></script>
+      <script src="/static/admin/js/ie/respond.min.js"></script>
+      <script src="/static/admin/js/ie/excanvas.js"></script>
+  <![endif]-->
 
-{% block title %}Logged out{% endblock %}
+  <script src="/static/admin/js/libs/jquery/jquery.min.js"></script>
+  <script src="/static/admin/js/libs/bootstrap/bootstrap.js"></script>
+  <script src="/static/admin/js/admin.js"></script>
+  <script src="/static/admin/js/admin.plugin.js"></script>
+  <script src="/static/admin/js/libs/slimscroll/jquery.slimscroll.min.js"></script>
+
+  <script type="text/javascript" src="//use.typekit.net/fdy0xrr.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+</head>
+<body>
+  <section id="content" class="m-t-lg wrapper-md animated fadeInUp">
+    <div class="container aside-xxl">
+      <a class="navbar-brand block" href="index.html"><img src="/static/admin/img/twined-logo-wh.png" /></a>
+      <section class="panel panel-default bg-white m-t-lg">
+        <header class="panel-heading text-center">
+          <strong>{{ admin.site_name }}</strong>
+        </header>
+        <div class="col-md-12">
+            <p class="lead m-t-md text-center">
+                Du er nå logget ut av administrasjonssidene.
+            </p>
+            <a class="btn btn-default btn-block btn-lg m-t-lg m-b-md" href="/">Tilbake til hjemmesiden</a>
+        </div>
+      </section>
+    </div>
+  </section>
+  <!-- footer -->
+  <footer id="footer" class="animated fadeInDown">
+    <div class="text-center text-white text-muted padder">
+      <p>
+        <small>&copy; twined/univers 2009-{% now "Y" %}</small>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
+{% comment %}
+{% extends "admin/base.html" %}
+{% load url from future %}
+
+{% block title %}Logg inn{% endblock %}
+{% block navbar %}
+{% endblock navbar %}
+{% block nav %}
+{% endblock nav %}
+{% block userinfo %}
+{% endblock userinfo %}
 
 {% block content %}
 
-<div id="login">
-	Successfully logged out.
+<div class="row">
+    <div id="login" class="span4 offset4 well" style="background-color: #fff; margin-top: 20px;">
+    <form method="post" action="{% url 'admin:login' %}">
+        {% if form.errors %}
+        <p>Innloggingen mislyktes.</p>
+        {% endif %}
+        {% csrf_token %}
+        <div>
+            <label for="id_username">Brukernavn</label>
+            <input style="border: 1px solid #eee; background-color: #fff; height: 40px; padding: 3px 6px;" type="text" name="username" id="id_username" />
+        </div>
+        <div>
+            <label for="id_password">Passord</label>
+            <input style="border: 1px solid #eee; box-sizing: border-box; background-color: #fff; height: 40px; padding: 3px 6px;" type="password" name="password" id="id_password" />
+        </div>
+    <hr>
+    <input type="submit" class="btn btn-success btn-large" value="Logg inn" />
+    <input type="hidden" name="next" value="{{ next }}" />
+    </form>
+    </div>
 </div>
 {% endblock %}
 
 {% block footer %}
-
 {% endblock %}
+{% endcomment %}
