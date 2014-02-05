@@ -593,3 +593,7 @@ input[type=number]::-webkit-outer-spin-button {
 .avatar {
   border: 2px solid rgba(255, 255, 255, 0.35);
 }
+
+.navbar-brand img {
+  max-height: 80px;
+}
