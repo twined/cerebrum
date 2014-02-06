@@ -591,7 +591,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .avatar {
-  border: 2px solid rgba(255, 255, 255, 0.35);
+  border: 2px solid rgba(221, 221, 221, 0.88);
 }
 
 .navbar-brand img {
