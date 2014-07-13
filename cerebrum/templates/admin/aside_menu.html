@@ -1,0 +1,67 @@
+{% load i18n %}
+{% load compressed active %}
+{% load static from staticfiles %}
+{% load url from future %}
+{% load admin_tags %}
+{% get_current_language as LANGUAGE_CODE %}
+<!-- .aside // menu -->
+    <aside class="bg-light lter aside-md" id="nav" style="border-top: 4px solid #FBA026;"> <!-- had b-r -->
+      <section class="vbox">
+        <!-- mobile nav -->
+        <div class="visible-xs header">
+          <header class="header navbar bg-white b-b navbar-fixed-top-xs">
+            <div class="navbar-header clearfix">
+              <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen" data-target="#nav">
+                <i class="fa fa-bars"></i>
+              </a>
+              <a href="#" class="navbar-brand" data-toggle="fullscreen">
+              </a>
+              <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".nav-user">
+                <i class="fa fa-cog"></i>
+              </a>
+            </div>
+          </header>
+        </div>
+{% block userinfo %}
+        <section class="w-f scrollable b-r">
+          <!-- nav -->
+          <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="7px" data-railOpacity="0.2">
+            <div class="clearfix wrapper bg-lighter nav-user hidden-xs">
+              <div class="dropdown text-center">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <span class="thumb-md avatar hidden-nav-xs">
+                    {% if request.user.profile.avatar %}
+                      <img alt="avatar" src="{{ request.user.profile.avatar.url }}">
+                    {% else %}
+                      <img alt="avatar" src="/static/admin/img/avatar_default.jpg">
+                    {% endif %}
+                  </span>
+                  <span class="hidden-nav-xs m-t-xs clear">
+                    <strong>{% if request.user.get_full_name %}{{ request.user.get_full_name }}{% else %}{{ request.user.username }}{% endif %}</strong> <b class="caret"></b>
+                    <span class="text-muted text-xs block font-bold">Administrator</span>
+                  </span>
+                </a>
+                <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                  <span class="arrow top hidden-nav-xs"></span>
+                  <li>
+                    <a href="{% url 'admin:logout' %}">Logg ut</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {% display_menu %}
+            <!-- / nav -->
+          </div>
+          <!-- / nav -->
+        </section>
+{% endblock userinfo %}
+        <footer class="footer lter hidden-xs b-t b-r">
+          <a href="#nav" data-toggle="class:nav-xs" class="pull-right btn btn-sm btn-warning btn-icon">
+            <i class="fa fa-angle-left text"></i>
+            <i class="fa fa-angle-right text-active"></i>
+          </a>
+        </footer>
+      </section>
+    </aside>
+    <!-- /.aside -->

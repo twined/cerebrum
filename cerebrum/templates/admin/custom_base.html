@@ -63,7 +63,6 @@
           <section class="hbox stretch">
             <section>
               <section class="vbox">
-                <section id="maincontent" class="scrollable wrapper">
                   {% if messages %}
                     {% for message in messages %}
                     <div class="alert alert-block{% if message.tags %} alert-{{ message.tags }}"{% endif %}>
@@ -74,7 +73,6 @@
                   {% endif %}
                   {% block content %}
                   {% endblock content %}
-                </section>
                 <footer class="footer bg-white b-t b-light">
                   <p>
                     &copy; twined/univers 2009-{% now "Y" %}. All rights reserved.

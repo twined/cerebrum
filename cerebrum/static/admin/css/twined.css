@@ -542,6 +542,7 @@ textarea {
   color: #FF7979;
 }
 
+/*
 .table > thead > tr > th,
 .table > tbody > tr > th,
 .table > tfoot > tr > th,
@@ -550,6 +551,7 @@ textarea {
 .table > tfoot > tr > td {
   vertical-align: baseline;
 }
+*/
 
 .bluegray {
   color: #DAE2E6;

@@ -4,7 +4,7 @@ from setuptools import find_packages
 
 setup(
     name='cerebrum',
-    version='0.2.1',
+    version='0.2.2',
     author=u'Twined',
     author_email='www.twined.net',
     packages=find_packages(),

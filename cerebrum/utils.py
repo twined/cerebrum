@@ -11,7 +11,7 @@ import types
 from urlparse import urlparse, parse_qs
 
 from django.core.serializers import serialize
-from django.utils.simplejson import dumps, loads, JSONEncoder
+from json import dumps, loads, JSONEncoder
 from django.db.models.query import QuerySet
 from django.http import HttpResponse
 from django.db import models
