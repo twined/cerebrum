@@ -43,7 +43,7 @@ def video_id(value):
 
 def json_response(response_data):
     return HttpResponse(json.dumps(response_data),
-                        mimetype="application/json")
+                        content_type="application/json")
 
 
 class DjangoJSONEncoder(JSONEncoder):
