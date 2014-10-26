@@ -1,5 +1,49 @@
 {% extends "admin/base.html" %}
+{% load activity_tags %}
 
 {% block content %}
-    <h1>Administrasjon</h1>
+          <section class="vbox">
+            <header class="header bg-white b-b b-light">
+              <p>{% if request.user.first_name %}{{ request.user.first_name }}{% else %}{{ request.user.username }}{% endif %}s profil</p>
+            </header>
+            <section class="scrollable">
+              <section class="hbox stretch">
+                <aside class="aside-lg bg-light lter b-r">
+                  <section class="vbox">
+                    <section class="scrollable">
+                      <div class="wrapper">
+                        <div class="clearfix m-b">
+                          <a href="#" class="pull-left thumb m-r">
+                            {% if request.user.profile.avatar %}
+                              <img alt="avatar" class="img-circle" src="{{ request.user.profile.avatar.url }}">
+                            {% else %}
+                              <img alt="avatar" class="img-circle" src="/static/admin/img/avatar_default.jpg">
+                            {% endif %}
+                          </a>
+                          <div class="clear">
+                            <div class="h3 m-t-xs m-b-xs">{% if request.user.get_full_name %}{{ request.user.get_full_name }}{% else %}{{ request.user.username }}{% endif %}</div>
+                            <small class="text-muted"><i class="fa fa-map-marker"></i> London, UK</small>
+                          </div>
+                        </div>
+                        <div>
+                          <small class="text-uc text-xs text-muted">sist innlogget</small>
+                          <p>{{ request.user.last_login|date:"d/m/Y H:i" }}</p>
+                        </div>
+                        <div>
+                          {% activity_stream 'actor' request.user %}
+                          <table class="table table-striped">
+                          {% for action in stream %}
+                            <tr>
+                              {% display_action action %}
+                            </tr>
+                          {% endfor %}
+                          </table>
+                        </div>
+                      </div>
+                    </section>
+                  </section>
+                </aside>
+              </section>
+          </section>
+      </section>
 {% endblock content %}

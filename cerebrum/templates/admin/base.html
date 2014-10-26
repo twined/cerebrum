@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="/static/admin/css/font.css" type="text/css" />
     <link rel="stylesheet" href="/static/admin/css/admin.css" type="text/css" />
     <link rel="stylesheet" href="/static/admin/css/twined.css" type="text/css" />
+    <link rel="stylesheet" href="/static/admin/css/jasny-bootstrap.css" type="text/css" />
     <!--[if lt IE 9]>
         <script src="/static/admin/js/ie/html5shiv.js"></script>
         <script src="/static/admin/js/ie/respond.min.js"></script>
@@ -33,15 +34,17 @@
     {% block extra_head %}{% endblock %}
     {% block css_extra %}{% endblock css_extra %}
 
-    {{ form.media }}
+
     <!-- javascript calls -->
     <script src="/static/admin/js/libs/jquery/jquery.min.js"></script>
     <script src="/static/admin/js/libs/bootstrap/bootstrap.js"></script>
     <script src="/static/admin/js/admin.js"></script>
-    <!--
-    <script src="/static/admin/js/admin.plugin.js"></script>
-    -->
     <script src="/static/admin/js/libs/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="/static/admin/js/jasny-bootstrap.js"></script>
+
+
+    {{ form.media }}
+    <!-- extra javascript calls -->
     {% block extra_js %}{% endblock extra_js %}
 
     <!-- fav & touch icons -->

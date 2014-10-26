@@ -6,7 +6,7 @@
   <ul class="nav">
 {% for menu_header, menu_data in menu.items %}
     <li class="menuparent">
-      <a href="#{{ menu_data.config.anchor }}">
+      <a href="#{{ menu_data.config.anchor }}" style="overflow: hidden;">
         <i class="{{ menu_data.config.icon }}">
           <b style="background-color: {{ menu_data.bgcolor }}"></b> <!-- class="bg-warning" -->
         </i>

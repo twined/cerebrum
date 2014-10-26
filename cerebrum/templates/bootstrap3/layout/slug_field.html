@@ -1,0 +1,12 @@
+<div id="div_{{ field.auto_id }}" class="form-group m-t-sm{% if form_show_errors%}{% if field.errors %} error{% endif %}{% endif %}{% if field.css_classes %} {{ field.css_classes }}{% endif %}">
+    {% if field.label %}
+        <label for="{{ field.id_for_label }}" class="control-label {% if field.field.required %}requiredField{% endif %}">
+            URL (uten spesialtegn, mellomrom og æøå){% if field.field.required %}<span class="asteriskField">*</span>{% endif %}
+        </label>
+    {% endif %}
+
+    <div class="input-group">
+    <span class="input-group-addon"><span class="fa fa-link"></span></span>
+        <input class="textinput textInput form-control text-mono" id="id_{{ field.html_name }}" name="{{ field.html_name }}" type="text" {% if field.value %}value="{{ field.value }}" {% endif %}style="background-color: #eeeeee;" />
+    </div>
+</div>

@@ -1,0 +1,34 @@
+{% load crispy_forms_field %}
+
+<div id="div_{{ field.auto_id }}" class="control-group{% if form_show_errors%}{% if field.errors %} error{% endif %}{% endif %}{% if field.css_classes %} {{ field.css_classes }}{% endif %}">
+    {% if field.label %}
+        <label for="{{ field.id_for_label }}" class="control-label {% if field.field.required %}requiredField{% endif %}">
+            {{ field.label|safe }}{% if field.field.required %}<span class="asteriskField">*</span>{% endif %}
+        </label>
+    {% endif %}
+
+    <div class="controls">
+        <div class="fileinput fileinput-new" data-provides="fileinput">
+          <div class="fileinput-new thumbnail" style="max-height: 150px;">
+            {% if field.value %}
+                <img src="{{ MEDIA_URL}}{{ field.value }}" style="max-height: 138px;" />
+            {% else %}
+                <img src="http://www.placehold.it/50x50/EFEFEF/AAAAAA" />
+            {% endif %}
+        </div>
+          <div class="fileinput-preview fileinput-exists thumbnail" style="max-height: 150px;">
+            {% if field.value %}
+                <img src="{{ MEDIA_URL}}{{ field.value }}" style="max-height: 138px;" />
+            {% endif %}
+          </div>
+          <div>
+            <span class="btn btn-default btn-file"><span class="fileinput-new">Last opp nytt bilde</span><span class="fileinput-exists">Bytt bilde (last opp et annet)</span><input type="file" name="{{ field.html_name }}" id="id_{{ field.html_name }}" value="{{ field.value }}" /></span>
+            <a href="#" class="btn btn-default fileinput-exists m-l-xs" data-dismiss="fileinput">Fjern bilde</a>
+          </div>
+        </div>
+        {% include 'bootstrap3/layout/help_text_and_errors.html' %}
+    </div>
+</div>
+<script>
+//$('.fileinput').fileinput();
+</script>

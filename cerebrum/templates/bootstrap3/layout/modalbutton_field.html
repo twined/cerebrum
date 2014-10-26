@@ -1,0 +1,24 @@
+<button {% if div.css_id %}id="{{ div.css_id }}"{% endif %}
+    data-toggle="modal" data-target="#{{ div.modal_id }}"
+    data-source="{{ div.content_source }}"
+    data-submitid="{{ div.modal_id }}Save"
+    class="modalbutton btn{% if div.css_class %} {{ div.css_class }}{% endif %}" {{ div.flat_attrs|safe }}>
+       {{ div.button_text|safe }}
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="{{ div.modal_id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">{{ div.button_text|safe }}</h4>
+      </div>
+      <div class="modal-body"><div class="te"></div></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" id="{{ div.modal.id }}Save" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

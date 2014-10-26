@@ -1,0 +1,44 @@
+{% load i18n %}
+    <td>
+    {% if action.target_content_type.model == 'page' %}
+        <span class="label label-info">SIDE</span>
+    {% elif action.target_content_type.model == 'project' %}
+        <span class="label label-info">PROSJEKT</span>
+    {% elif action.target_content_type.model == 'product' %}
+        <span class="label label-info">PRODUKT</span>
+    {% endif %}
+    </td>
+    <td>
+    {% if action.actor.get_absolute_url %}
+        <a href="{{ action.actor.get_absolute_url }}">{{ action.actor }}</a>
+    {% else %}
+        <a href="{{ action.actor_url }}">{{ action.actor }}</a>
+    {% endif %}
+    </td>
+    <td>
+    {{ action.verb }}
+    </td>
+    <td>
+    {% if action.action_object %}
+        {% if action.action_object.get_absolute_url %}
+            <a href="{{ action.action_object.get_absolute_url }}">{{ action.action_object }}</a>
+        {% else %}
+            <a href="{{ action.target_url }}">{{ action.action_object }}</a>
+        {% endif %}
+    {% endif %}
+    </td>
+    <td>
+    {% if action.action_object and action.target %}to{% endif %}
+    </td>
+    <td>
+    {% if action.target %}
+        {% if action.target.get_absolute_url %}
+            <a href="{{ action.target.get_absolute_url }}">{{ action.target }}</a>
+        {% else %}
+            <a href="{{ action.target_url }}">{{ action.target }}</a>
+        {% endif %}
+    {% endif %}
+    </td>
+    <td>
+    {{ action.timestamp|timesince }} {% trans "ago" %}
+    </td>

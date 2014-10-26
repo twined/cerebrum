@@ -30,7 +30,6 @@ for app in settings.INSTALLED_APPS:
         urlcfg = getattr(module, 'APP_ADMIN_URLS', '')
         if not urlcfg:
             continue
-
         urlpatterns += patterns(
             'admin',
             url(
@@ -44,9 +43,14 @@ for app in settings.INSTALLED_APPS:
     except ImportError, e:
         # we don't catch the ImportErrors that looks for admin
         # files, since they're not in every app
+        #  import ipdb; ipdb.set_trace()
         if str(e) in ('No module named config',
                       'No module named admin.config'):
             pass
+            #  if settings.DEBUG:
+            #    print("%s -> %s" % (admin_cfg_dotpath, str(e)))
+            #  else:
+            #    pass
         else:
             print "app failing: %s" % app
             raise ImportError(e)

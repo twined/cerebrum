@@ -17,6 +17,11 @@ APP_ADMIN_MENU = {
                 'icon': 'icon-trash',
                 'order': 0,
             },
+            'Logg ut': {
+                'url': reverse_lazy('admin:logout'),
+                'icon': 'icon-home',
+                'order': 0,
+            },
         }
     }
 }

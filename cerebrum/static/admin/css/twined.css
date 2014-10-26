@@ -1,3 +1,29 @@
+@font-face {
+    font-family: 'a-reg';
+    src: url('/static/admin/fonts/ar-webfont.eot'); /* IE9 Compat Modes */
+    src: url('/static/admin/fonts/ar-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('/static/admin/fonts/ar-webfont.woff') format('woff'), /* Modern Browsers */
+         url('/static/admin/fonts/ar-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
+         url('/static/admin/fonts/ar-webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+@font-face {
+    font-family: 'a-reg';
+    src: url('/static/admin/fonts/ab-webfont.eot'); /* IE9 Compat Modes */
+    src: url('/static/admin/fonts/ab-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('/static/admin/fonts/ab-webfont.woff') format('woff'), /* Modern Browsers */
+         url('/static/admin/fonts/ab-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
+         url('/static/admin/fonts/ab-webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+    font-weight: bold;
+}
+@font-face {
+    font-family: 'a-mono';
+    src: url('/static/admin/fonts/am-webfont.eot'); /* IE9 Compat Modes */
+    src: url('/static/admin/fonts/am-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('/static/admin/fonts/am-webfont.woff') format('woff'), /* Modern Browsers */
+         url('/static/admin/fonts/am-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
+         url('/static/admin/fonts/am-webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+
 html {
   background-color: #F7F7F7;
 }
@@ -76,7 +102,7 @@ form input[type="search"],
 form input[type="tel"],
 form input[type="color"],
 .uneditable-input {
-  font-family: "ff-meta-web-pro";
+  font-family: "a-reg";
   /*padding: 20px 10px;*/
 }
 .form-sidebar textarea,
@@ -98,7 +124,7 @@ form input[type="color"],
   width: 100%;
 }
 form textarea {
-  font-family: "ff-meta-web-pro";
+  font-family: "a-reg";
 }
 .sidebar-nav {
   padding: 5px;
@@ -112,7 +138,7 @@ form textarea {
   padding: 15px;
   margin: 15px 0;
   margin-top: 50px;
-  font-family: "ff-meta-serif-web-pro";
+  font-family: "a-reg";
 }
 #showdown .i-imgin.small.left {
   width: 200px;
@@ -239,7 +265,7 @@ p.lead {
 }
 .post-body p,
 .campaign-body p {
-  font-family: "ff-meta-serif-web-pro";
+  font-family: "a-reg";
   font-weight: 300;
   font-size: 15px;
   line-height: 29px;
@@ -274,7 +300,7 @@ p.lead {
 .fileitem .filename {
   float: left;
   width: 350px;
-  font-family: "ff-meta-web-pro";
+  font-family: "a-reg";
   font-weight: 600;
   font-size: 14px;
   color: #333;
@@ -283,14 +309,14 @@ p.lead {
 .fileitem .filesize {
   float: left;
   line-height: 27px;
-  font-family: "ff-meta-web-pro";
+  font-family: "a-reg";
   font-size: 12px;
   width: 130px;
 }
 .fileitem .filestatus {
   float: left;
   line-height: 27px;
-  font-family: "ff-meta-web-pro";
+  font-family: "a-reg";
   font-size: 12px;
 }
 #login input[type="text"],
@@ -487,7 +513,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "ff-meta-serif-web-pro";
+  font-family: "a-reg";
   font-weight: 700;
 }
 body,
@@ -495,7 +521,7 @@ input,
 button,
 select,
 textarea {
-  font-family: "ff-meta-web-pro";
+  font-family: "a-reg";
   -webkit-font-smoothing: antialiased;
 }
 @media (min-width: 980px) and (max-width: 1199px) {
@@ -593,9 +619,235 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .avatar {
-  border: 2px solid rgba(221, 221, 221, 0.88);
+  border: 0;
 }
 
 .navbar-brand img {
   max-height: 80px;
+}
+
+.text-mono {
+  font-family: "a-mono", "Monaco", "Courier New" !important;
+}
+
+.panel .table-striped > tbody > tr:nth-child(even) > td,
+.panel .table-striped > tbody > tr:nth-child(even) > th {
+   background-color: #F9F9F9;
+ }
+.panel .table-striped > tbody > tr:nth-child(odd) > td,
+.panel .table-striped > tbody > tr:nth-child(odd) > th {
+   background-color: #FFFFFF;
+}
+
+.hover-rotate {
+  -webkit-transition: all .2s ease-in-out .1s;
+  transition: all .2s ease-in-out .1s;
+}
+
+.panel .table td {
+  vertical-align: middle;
+}
+
+@-webkit-keyframes spinAround {
+  from {
+    -webkit-transform: rotate(0deg)
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-moz-keyframes spinAround {
+  from {
+    -moz-transform: rotate(0deg)
+  }
+  to {
+    -moz-transform: rotate(360deg);
+  }
+}
+@keyframes spinAround {
+  from {
+    transform: rotate(0deg)
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.ddbutton {
+  display: inline-block;
+  font-size: 16px;
+  padding: 7px;
+  cursor: pointer;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 0 0 3px #EEE;
+  background-color: #fff;
+  -webkit-transition: background 0.2s, color 0.2s;
+  -moz-transition: background 0.2s, color 0.2s;
+  transition: background 0.2s, color 0.2s;
+}
+
+.ddbutton i {
+  color: #A3A3A3;
+}
+.ddbutton:hover i {
+  color: #ffffff;
+}
+
+.ddbutton:hover {
+  background: #333;
+  box-shadow: none;
+}
+
+
+.ddbutton i:hover:before {
+  -webkit-animation: spinAround 0.3s ease 1;
+  -moz-animation: spinAround 0.3s ease 1;
+  animation: spinAround 0.3s ease 1;
+  -webkit-animation-fill-mode: forwards; /* Chrome, Safari, Opera */
+  animation-fill-mode: forwards;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: "a-reg", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+/*
+.froala-modal .f-modal-wrapper div.f-image-list {
+list-style-type: none !important;
+margin: 10px !important;
+padding: 0 !important;
+width: 600px !important;
+text-align: left !important;
+vertical-align: top !important;
+column-count: 1 !important;
+-moz-column-count: 1 !important;
+-webkit-column-count: 1 !important;
+column-gap: 0 !important;
+-moz-column-gap: 0 !important;
+-webkit-column-gap: 0 !important;
+}
+
+.froala-modal .f-modal-wrapper div.f-image-list div {
+position: relative !important;
+
+width: 148px !important;
+display: inline-block !important;
+margin-bottom: 10px !important;
+padding: 4px !important;
+border: 1px solid #EEE !important;
+margin: 10px !important;
+}
+*/
+
+.btn-file {
+  overflow: hidden;
+  position: relative;
+  vertical-align: middle;
+}
+.btn-file > input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  font-size: 23px;
+  height: 100%;
+  width: 100%;
+  direction: ltr;
+  cursor: pointer;
+}
+.fileinput {
+  margin-bottom: 9px;
+  display: inline-block;
+}
+.fileinput .form-control {
+  padding-top: 7px;
+  padding-bottom: 5px;
+  display: inline-block;
+  margin-bottom: 0px;
+  vertical-align: middle;
+  cursor: text;
+}
+.fileinput .thumbnail {
+  overflow: hidden;
+  display: inline-block;
+  margin-bottom: 5px;
+  vertical-align: middle;
+  text-align: center;
+}
+.fileinput .thumbnail > img {
+  max-height: 100%;
+}
+.fileinput .btn {
+  vertical-align: middle;
+}
+.fileinput-exists .fileinput-new,
+.fileinput-new .fileinput-exists {
+  display: none;
+}
+.fileinput-inline .fileinput-controls {
+  display: inline;
+}
+.fileinput-filename {
+  vertical-align: middle;
+  display: inline-block;
+  overflow: hidden;
+}
+.form-control .fileinput-filename {
+  vertical-align: bottom;
+}
+.fileinput.input-group {
+  display: table;
+}
+.fileinput.input-group > * {
+  position: relative;
+  z-index: 2;
+}
+.fileinput.input-group > .btn-file {
+  z-index: 1;
+}
+.fileinput-new.input-group .btn-file,
+.fileinput-new .input-group .btn-file {
+  border-radius: 0 4px 4px 0;
+}
+.fileinput-new.input-group .btn-file.btn-xs,
+.fileinput-new .input-group .btn-file.btn-xs,
+.fileinput-new.input-group .btn-file.btn-sm,
+.fileinput-new .input-group .btn-file.btn-sm {
+  border-radius: 0 3px 3px 0;
+}
+.fileinput-new.input-group .btn-file.btn-lg,
+.fileinput-new .input-group .btn-file.btn-lg {
+  border-radius: 0 6px 6px 0;
+}
+.form-group.has-warning .fileinput .fileinput-preview {
+  color: #8a6d3b;
+}
+.form-group.has-warning .fileinput .thumbnail {
+  border-color: #faebcc;
+}
+.form-group.has-error .fileinput .fileinput-preview {
+  color: #a94442;
+}
+.form-group.has-error .fileinput .thumbnail {
+  border-color: #ebccd1;
+}
+.form-group.has-success .fileinput .fileinput-preview {
+  color: #3c763d;
+}
+.form-group.has-success .fileinput .thumbnail {
+  border-color: #d6e9c6;
+}
+.input-group-addon:not(:first-child) {
+  border-left: 0;
+}
+
+.selectpicker .selected {
+  border: 0;
+  background-color: #DEE;
 }
