@@ -29,7 +29,7 @@
                           <small class="text-uc text-xs text-muted">sist innlogget</small>
                           <p>{{ request.user.last_login|date:"d/m/Y H:i" }}</p>
                         </div>
-{#
+{% comment %}
                         <div>
                           {% activity_stream 'actor' request.user %}
                           <table class="table table-striped">
@@ -40,7 +40,7 @@
                           {% endfor %}
                           </table>
                         </div>
-#}
+{% endcomment %}
                       </div>
                     </section>
                   </section>
