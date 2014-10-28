@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="bg-success">
+<html lang="en" class="bg-success" style="background-color: #F5F5F5;">
 <head>
   <meta charset="utf-8" />
   <title>{{ admin.site_name }} | admin login</title>
@@ -31,25 +31,33 @@
 <body>
   <section id="content" class="m-t-lg wrapper-md animated fadeInUp">
     <div class="container aside-xxl">
-      <a class="navbar-brand block" href="index.html"><img src="/static/admin/img/twined-logo-wh.png" /></a>
+      <a class="navbar-brand block" href="index.html">
+        <img src="/static/admin/img/twined-logo-red.png" style="max-height: 190px;" />
+      </a>
       {% if form.errors %}
         <div class="alert alert-danger"><span class="font-bold">Innloggingen mislyktes.</span></div>
       {% endif %}
-      <section class="panel panel-default bg-white m-t-lg">
-        <header class="panel-heading text-center">
+      <section class="panel panel-default bg-white m-t-lg" style="margin-top: 180px;">
+        <div class="text-center text-mono m-t-lg">
           <strong>{{ admin.site_name }}</strong>
-        </header>
+        </div>
         <form method="post" action="{% url 'admin:login' %}" class="panel-body wrapper-lg">
           {% csrf_token %}
           <div class="form-group">
-            <label class="control-label">Brukernavn</label>
-            <input name="username" id="id_username" type="text" placeholder="Brukernavn" class="form-control input-lg">
+            <label class="control-label" style="display:none;">Brukernavn</label>
+            <input name="username" id="id_username" type="text" placeholder="Brukernavn" class="form-control input-lg text-mono text-center" style="
+    border: 0;
+    background-color: #F5F3F3;
+">
           </div>
           <div class="form-group">
-            <label class="control-label">Passord</label>
-            <input type="password" name="password" id="id_password" placeholder="Passord" class="form-control input-lg">
+            <label class="control-label" style="display:none;">Passord</label>
+            <input type="password" name="password" id="id_password" placeholder="Passord" class="form-control input-lg text-mono text-center" style="
+    border: 0;
+    background-color: #F5F3F3;
+">
           </div>
-          <button type="submit" class="btn btn-primary btn-block btn-lg m-t-lg">Logg inn</button>
+          <button type="submit" class="btn btn-primary btn-block btn-lg m-t-lg" style="background-color: #DA4949; border: 0;">Logg inn</button>
           <input type="hidden" name="next" value="{{ next }}" />
         </form>
       </section>
@@ -57,7 +65,7 @@
   </section>
   <!-- footer -->
   <footer id="footer" class="animated fadeInDown">
-    <div class="text-center text-white text-muted padder">
+    <div class="text-center padder">
       <p>
         <small>&copy; twined/univers 2009-{% now "Y" %}</small>
       </p>

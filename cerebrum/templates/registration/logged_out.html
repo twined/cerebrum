@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" class="bg-success">
+<html lang="en" class="bg-success" style="background-color: #F5F5F5;">
 <head>
   <meta charset="utf-8" />
-  <title>Logget ut</title>
+  <title>{{ admin.site_name }} | admin login</title>
   <meta name="description" content="admin" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <!-- stylesheets -->
@@ -31,23 +31,25 @@
 <body>
   <section id="content" class="m-t-lg wrapper-md animated fadeInUp">
     <div class="container aside-xxl">
-      <a class="navbar-brand block" href="index.html"><img src="/static/admin/img/twined-logo-wh.png" /></a>
-      <section class="panel panel-default bg-white m-t-lg">
-        <header class="panel-heading text-center">
+      <a class="navbar-brand block" href="index.html">
+        <img src="/static/admin/img/twined-logo-red.png" style="max-height: 190px;" />
+      </a>
+      {% if form.errors %}
+        <div class="alert alert-danger"><span class="font-bold">Innloggingen mislyktes.</span></div>
+      {% endif %}
+      <section class="panel panel-default bg-white m-t-lg" style="margin-top: 180px;">
+        <div class="text-center text-mono m-t-lg">
           <strong>{{ admin.site_name }}</strong>
-        </header>
-        <div class="col-md-12">
+        </div>
             <p class="lead m-t-md text-center">
                 Du er nå logget ut av administrasjonssidene.
             </p>
-            <a class="btn btn-default btn-block btn-lg m-t-lg m-b-md" href="/">Tilbake til hjemmesiden</a>
-        </div>
       </section>
     </div>
   </section>
   <!-- footer -->
   <footer id="footer" class="animated fadeInDown">
-    <div class="text-center text-white text-muted padder">
+    <div class="text-center text-muted padder">
       <p>
         <small>&copy; twined/univers 2009-{% now "Y" %}</small>
       </p>
@@ -55,43 +57,3 @@
   </footer>
 </body>
 </html>
-{% comment %}
-{% extends "admin/base.html" %}
-{% load url from future %}
-
-{% block title %}Logg inn{% endblock %}
-{% block navbar %}
-{% endblock navbar %}
-{% block nav %}
-{% endblock nav %}
-{% block userinfo %}
-{% endblock userinfo %}
-
-{% block content %}
-
-<div class="row">
-    <div id="login" class="span4 offset4 well" style="background-color: #fff; margin-top: 20px;">
-    <form method="post" action="{% url 'admin:login' %}">
-        {% if form.errors %}
-        <p>Innloggingen mislyktes.</p>
-        {% endif %}
-        {% csrf_token %}
-        <div>
-            <label for="id_username">Brukernavn</label>
-            <input style="border: 1px solid #eee; background-color: #fff; height: 40px; padding: 3px 6px;" type="text" name="username" id="id_username" />
-        </div>
-        <div>
-            <label for="id_password">Passord</label>
-            <input style="border: 1px solid #eee; box-sizing: border-box; background-color: #fff; height: 40px; padding: 3px 6px;" type="password" name="password" id="id_password" />
-        </div>
-    <hr>
-    <input type="submit" class="btn btn-success btn-large" value="Logg inn" />
-    <input type="hidden" name="next" value="{{ next }}" />
-    </form>
-    </div>
-</div>
-{% endblock %}
-
-{% block footer %}
-{% endblock %}
-{% endcomment %}
