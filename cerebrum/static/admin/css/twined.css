@@ -851,3 +851,18 @@ margin: 10px !important;
   border: 0;
   background-color: #DEE;
 }
+
+.radio, .checkbox {
+  margin-left: 30px;
+}
+
+.radio input[type="radio"],
+.radio-inline input[type="radio"],
+.checkbox input[type="checkbox"],
+.checkbox-inline input[type="checkbox"] {
+  margin-left: -30px;
+}
+
+.checkbox {
+  margin-left: 10px;
+}
