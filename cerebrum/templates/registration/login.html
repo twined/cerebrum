@@ -29,17 +29,17 @@
 
 </head>
 <body>
+{% if form.errors %}
+    <div class="alert alert-danger text-center"><span class="text-mono">Innloggingen mislyktes.</span></div>
+{% endif %}
   <section id="content" class="m-t-lg wrapper-md animated fadeInUp">
     <div class="container aside-xxl">
       <a class="navbar-brand block" href="index.html">
         <img src="/static/admin/img/twined-logo-red.png" style="max-height: 190px;" />
       </a>
-      {% if form.errors %}
-        <div class="alert alert-danger"><span class="font-bold">Innloggingen mislyktes.</span></div>
-      {% endif %}
       <section class="panel panel-default bg-white m-t-lg" style="margin-top: 180px;">
         <div class="text-center text-mono m-t-lg">
-          <strong>{{ admin.site_name }}</strong>
+        <span class="text-muted">:::</span> <strong>{{ admin.site_name }}</strong> <span class="text-muted">:::</span>
         </div>
         <form method="post" action="{% url 'admin:login' %}" class="panel-body wrapper-lg">
           {% csrf_token %}
