@@ -6,12 +6,12 @@
 # ----------------------------------------------------------------------
 
 from django.contrib import messages
-from django.core.cache import cache
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView, View
 
 from ..views import LoginRequiredMixin
+from ..cache import cache_delete_pattern
 
 
 class DashboardIndex(LoginRequiredMixin, TemplateView):
@@ -31,7 +31,8 @@ class CacheBustView(LoginRequiredMixin, View):
     """
 
     def get(self, request, *args, **kwargs):
-        cache.delete_pattern('*')
+        # deletes all template fragment caches
+        cache_delete_pattern('template.cache.*')
         messages.success(
             self.request,
             'Cachen er slettet!',

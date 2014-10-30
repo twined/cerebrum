@@ -23,5 +23,14 @@ def admin(request):
     return {'admin': cfg}
 
 
+def cache_constants(request):
+    return {
+        'SHORT_TTL': 60*10,
+        'MEDIUM_TTL': 60*30,
+        'LONG_TTL': 60*60,
+        'FOREVER_TTL': 60*60*24*7
+    }
+
+
 def date_now(request):
     return {'date_now': datetime.datetime.now()}

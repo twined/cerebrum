@@ -73,14 +73,14 @@ html {
   background-color: #EEE;
 }
 .well {
-  background-color: #f3eded;
-  -webkit-box-shadow: 0;
-  -moz-box-shadow: 0;
+  background-color: #F7F7F7;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
   border: 0;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
-  box-shadow: 0;
+  box-shadow: none;
 }
 form label,
 label {
@@ -865,4 +865,11 @@ margin: 10px !important;
 
 .checkbox {
   margin-left: 10px;
+}
+
+.imageserie img {
+  border: 1px solid #EEE;
+  padding: 5px;
+  margin: 5px;
+  background-color: #FFF;
 }
