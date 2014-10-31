@@ -873,3 +873,11 @@ margin: 10px !important;
   margin: 5px;
   background-color: #FFF;
 }
+
+.panel .table-striped > thead th {
+  background: #3D3D3D;
+  border-right: 3px solid #FFF;
+  color: #FFF;
+  /* font-weight: normal; */
+  font-size: 14px;
+}

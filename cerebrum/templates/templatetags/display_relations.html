@@ -1,0 +1,15 @@
+
+{% for relation in relations %}
+<ul>
+    <li>
+    {{ relation }}
+    <ul>
+    {% for connection in relation.all %}
+        <li>
+        {{ connection }}
+        </li>
+    {% endfor %}
+    </ul>
+</li>
+</ul>
+{% endfor %}

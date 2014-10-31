@@ -1,0 +1,26 @@
+{% extends "admin/base.html" %}
+{% load get_fields %}
+{% load display_relations %}
+{% block content %}
+        <section class="panel">
+            <header class="panel-heading">
+                <h3><span class="fa fa-bolt m-r-sm"></span>Slett: {{ object }}</h3>
+            </header>
+            <section class="panel-body">
+                <form action="" method="POST">{% csrf_token %}
+                    <p class="m-b-lg">Er du sikker på at du vil slette dette objektet? Det kan ikke gjenopprettes senere.</p>
+                    <table class="table table-striped b-b">
+                        {% get_fields object as object_fields %}
+                        {% for object_field in object_fields %}
+                        <tr>
+                        <td class="small text-mono text-uppercase b-r" style="width: 100px; text-align: right;">{{ object_field.0 }}</td>
+                            <td class="text-mono"><strong>{{ object_field.1 }}</strong></td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    {% display_relations object %}
+                    <input class="btn btn-danger" type="submit" value="Slett!" />
+                </form>
+            </section>
+        </section>
+{% endblock %}
