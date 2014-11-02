@@ -24,11 +24,12 @@ def admin(request):
 
 
 def cache_constants(request):
+    cfg = getattr(settings, 'ADMIN_CONFIG')
     return {
-        'SHORT_TTL': 60*10,
-        'MEDIUM_TTL': 60*30,
-        'LONG_TTL': 60*60,
-        'FOREVER_TTL': 60*60*24*7
+        'SHORT_TTL': cfg['SHORT_TTL'],
+        'MEDIUM_TTL': cfg['MEDIUM_TTL'],
+        'LONG_TTL': cfg['LONG_TTL'],
+        'FOREVER_TTL': cfg['FOREVER_TTL'],
     }
 
 

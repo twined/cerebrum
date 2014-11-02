@@ -21,26 +21,14 @@
                             {% endif %}
                           </a>
                           <div class="clear">
-                            <div class="h3 m-t-xs m-b-xs">{% if request.user.get_full_name %}{{ request.user.get_full_name }}{% else %}{{ request.user.username }}{% endif %}</div>
-                            <small class="text-muted"><i class="fa fa-map-marker"></i> London, UK</small>
+                            <div class="h3 m-t-xs m-b-xs text-mono">{% if request.user.get_full_name %}{{ request.user.get_full_name }}{% else %}{{ request.user.username }}{% endif %}</div>
+                            <small class="text-muted"><i class="fa fa-email"></i> {{ request.user.email }}</small>
                           </div>
                         </div>
                         <div>
                           <small class="text-uc text-xs text-muted">sist innlogget</small>
                           <p>{{ request.user.last_login|date:"d/m/Y H:i" }}</p>
                         </div>
-{% comment %}
-                        <div>
-                          {% activity_stream 'actor' request.user %}
-                          <table class="table table-striped">
-                          {% for action in stream %}
-                            <tr>
-                              {% display_action action %}
-                            </tr>
-                          {% endfor %}
-                          </table>
-                        </div>
-{% endcomment %}
                       </div>
                     </section>
                   </section>

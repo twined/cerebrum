@@ -1,12 +1,14 @@
 from django.conf import settings
 
 ADMIN_CONFIG = {
+    'SHORT_TTL': 60*60*2,
+    'MEDIUM_TTL': 60*60*6,
+    'LONG_TTL': 60*60*14,
+    'FOREVER_TTL': 60*60*24*7,
     'site_url': '',
     'site_version': '1.0',
     'site_name': 'NAME',
     'menu_colors': [
-
-
         '#FBA026;',
         '#F87117;',
         '#CF3510;',

@@ -8,9 +8,10 @@
 from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
-from django.views.generic import TemplateView, View
+from django.views.generic import TemplateView
+from django.views.generic import View
 
-from ..views import LoginRequiredMixin
+from ..mixins import LoginRequiredMixin
 from ..cache import cache_delete_pattern
 
 

@@ -1,6 +1,7 @@
 from django.template.loader import render_to_string
 
-from crispy_forms.layout import Field, LayoutObject
+from crispy_forms.layout import Field
+from crispy_forms.layout import LayoutObject
 from crispy_forms.utils import flatatt
 
 
