@@ -15,6 +15,16 @@ from django.db.models.query import QuerySet
 from django.db import models
 from django.http import HttpResponse
 from django.utils.functional import curry
+from django.views.debug import SafeExceptionReporterFilter
+
+
+class ExceptionReporterFilter(SafeExceptionReporterFilter):
+    def get_traceback_frame_variables(self, request, tb_frame):
+        cleansed_items = super(
+            ExceptionReporterFilter, self).get_traceback_frame_variables(
+                self, request, tb_frame
+            )
+        return cleansed_items
 
 
 def video_id(value):
