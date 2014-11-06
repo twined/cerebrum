@@ -1,0 +1,34 @@
+{% load crispy_forms_filters %}
+{% load crispy_forms_field %}
+{% load l10n %}
+
+<{% if tag %}{{ tag }}{% else %}div{% endif %} id="div_{{ field.auto_id }}" {% if not field|is_checkbox %}class="form-group{% else %}class="checkbox{% endif %}{% if wrapper_class %} {{ wrapper_class }}{% endif %}{% if form_show_errors%}{% if field.errors %} has-error{% endif %}{% endif %}{% if field.css_classes %} {{ field.css_classes }}{% endif %}">
+        {% if field.label and not field|is_checkbox and form_show_labels %}
+            <label for="{{ field.id_for_label }}" class="control-label {{ label_class }}{% if field.field.required %} requiredField{% endif %}">
+                {{ field.label|safe }}{% if field.field.required %}<span class="asteriskField">*</span>{% endif %}
+            </label>
+        {% endif %}
+
+<div class="controls {{ field_class }}"{% if flat_attrs %} {{ flat_attrs|safe }}{% endif %}>
+    {% include 'bootstrap3/layout/field_errors_block.html' %}
+
+    {% for choice in field.field.choices %}
+        <label style="font-size: 18px;" class="radio{% if inline_class %}-{{ inline_class }}{% endif %}">
+            <input type="radio"{% if choice.0|stringformat:"s" == field.value|stringformat:"s" %} checked="checked"{% endif %} name="{{ field.html_name }}" id="id_{{ field.html_name }}_{{ forloop.counter }}" value="{{ choice.0|unlocalize }}" {{ field.field.widget.attrs|flatatt }}>
+            {% if choice.1 == "Kladd" %}
+                <span class="label label-default" style="display: block; padding: 5px;">
+            {% elif choice.1 == "Venter" %}
+                <span class="label label-warning" style="display: block; padding: 5px;">
+            {% elif choice.1 == "Publisert" %}
+                <span class="label label-success" style="display: block; padding: 5px;">
+            {% elif choice.1 == "Slettet" %}
+                <span class="label label-danger" style="display: block; padding: 5px;">
+            {% endif %}
+            {{ choice.1|unlocalize }}
+            </span>
+        </label>
+    {% endfor %}
+
+    {% include 'bootstrap3/layout/help_text.html' %}
+</div>
+</{% if tag %}{{ tag }}{% else %}div{% endif %}>

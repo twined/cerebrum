@@ -9,6 +9,10 @@ class FileField(Field):
     template = 'bootstrap3/layout/file_field.html'
 
 
+class StatusField(Field):
+    template = 'bootstrap3/layout/status_field.html'
+
+
 class SlugField(Field):
     template = 'bootstrap3/layout/slug_field.html'
 

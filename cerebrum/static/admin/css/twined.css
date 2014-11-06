@@ -892,3 +892,7 @@ margin: 10px !important;
 
 .flag.flag-nb {background-position: -16px 0}
 .flag.flag-en {background-position: 0 -11px}
+
+.dropdown-menu > li > a {
+  padding: 10px 15px;
+}
