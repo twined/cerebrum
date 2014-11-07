@@ -1,5 +1,5 @@
 {% load crispy_forms_field %}
-
+{{ img_width }}
 <div id="div_{{ field.auto_id }}" class="control-group{% if form_show_errors%}{% if field.errors %} error{% endif %}{% endif %}{% if field.css_classes %} {{ field.css_classes }}{% endif %}">
     {% if field.label %}
         <label for="{{ field.id_for_label }}" class="control-label {% if field.field.required %}requiredField{% endif %}">
@@ -9,16 +9,16 @@
 
     <div class="controls">
         <div class="fileinput fileinput-new" data-provides="fileinput">
-          <div class="fileinput-new thumbnail" style="max-height: 200px;">
+          <div class="fileinput-new thumbnail" style="max-height: 400px;">
             {% if field.value %}
-                <img src="{{ MEDIA_URL}}{{ field.value }}" style="max-height: 138px;" />
+                <img src="{{ MEDIA_URL}}{{ field.value }}" style="max-height: 395px;" />
             {% else %}
-                <img src="http://www.placehold.it/200x200/EFEFEF/AAAAAA" />
+                <img src="http://www.placehold.it/531x445/FFFEEF/FFFEEF" />
             {% endif %}
         </div>
-          <div class="fileinput-preview fileinput-exists thumbnail" style="max-height: 200px;">
+          <div class="fileinput-preview fileinput-exists thumbnail" style="max-height: 400px;">
             {% if field.value %}
-                <img src="{{ MEDIA_URL}}{{ field.value }}" style="max-height: 138px;" />
+                <img src="{{ MEDIA_URL}}{{ field.value }}" style="max-height: 395px;" />
             {% endif %}
           </div>
           <div>

@@ -66,11 +66,15 @@ html {
 }
 .help-inline {
   padding: 3px 7px;
-  background-color: #EEE;
+  background-color: rgba(253, 252, 172, 0.84);
+  font-size: 12px;
+  font-weight: bold;
 }
 .help-block {
   padding: 3px 7px;
-  background-color: #EEE;
+  background-color: rgba(253, 252, 172, 0.84);
+  font-size: 12px;
+  font-weight: bold;
 }
 .well {
   background-color: #F7F7F7;
@@ -895,4 +899,7 @@ margin: 10px !important;
 
 .dropdown-menu > li > a {
   padding: 10px 15px;
+}
+.nav-primary li > a > i {
+  font-size: 16px;
 }

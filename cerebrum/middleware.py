@@ -1,3 +1,7 @@
+from django.conf import settings
+from django.utils import translation
+
+
 class ForceDefaultLanguageMiddleware(object):
     """
     Ignore Accept-Language HTTP headers
@@ -13,3 +17,11 @@ class ForceDefaultLanguageMiddleware(object):
     def process_request(self, request):
         if 'HTTP_ACCEPT_LANGUAGE' in request.META:
             del request.META['HTTP_ACCEPT_LANGUAGE']
+
+
+class AdminLocaleMiddleware:
+    def process_request(self, request):
+        if request.path.startswith('/admin'):
+            request.LANG = 'no'
+            translation.activate(request.LANG)
+            request.LANGUAGE_CODE = request.LANG

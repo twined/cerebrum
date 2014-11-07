@@ -13,6 +13,7 @@ from django.views.generic import View
 
 from ..mixins import LoginRequiredMixin
 from ..cache import cache_delete_pattern
+from .. import registry
 
 
 class DashboardIndex(LoginRequiredMixin, TemplateView):
@@ -22,7 +23,12 @@ class DashboardIndex(LoginRequiredMixin, TemplateView):
     template_name = 'dashboard/admin/index.html'
 
     def get_context_data(self, **kwargs):
+        '''
+        build dashboard plugins
+        '''
         context = super(DashboardIndex, self).get_context_data(**kwargs)
+        context['plugins'] = [registry.registry[key]()
+                              for key, val in registry.registry.items()]
         return context
 
 
