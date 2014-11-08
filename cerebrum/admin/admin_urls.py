@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-
-# ----------------------------------------------------------------------
-# Urls definition for the Cerebrum app
-# (c) Twined/Univers 2009-2014. All rights reserved.
-# ----------------------------------------------------------------------
+"""
+// Twined - Cerebrum
+// admin url definitions for the Cerebrum app
+// (c) Twined/Univers 2009-2014. All rights reserved.
+"""
 
 from django.conf.urls import patterns, url, include
 from django.conf import settings
