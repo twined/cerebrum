@@ -33,7 +33,7 @@
                     {% if request.user.profile.avatar %}
                       <img alt="avatar" src="{{ request.user.profile.avatar.url }}">
                     {% else %}
-                      <img alt="avatar" src="/static/admin/img/avatar_default.jpg">
+                      <img alt="avatar" src="{% static 'admin/img/avatar_default.jpg' %}">
                     {% endif %}
                   </span>
                   <span class="hidden-nav-xs m-t-xs clear">
