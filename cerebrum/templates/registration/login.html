@@ -5,24 +5,19 @@
   <title>{{ admin.site_name }} | admin login</title>
   <meta name="description" content="admin" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <!-- stylesheets -->
-  <link rel="stylesheet" href="/static/admin/css/bootstrap.css" type="text/css" />
-  <link rel="stylesheet" href="/static/admin/css/animate.css" type="text/css" />
-  <link rel="stylesheet" href="/static/admin/css/font-awesome.min.css" type="text/css" />
-  <link rel="stylesheet" href="/static/admin/css/font.css" type="text/css" />
-  <link rel="stylesheet" href="/static/admin/css/admin.css" type="text/css" />
-  <link rel="stylesheet" href="/static/admin/css/twined.css" type="text/css" />
-  <!--[if lt IE 9]>
-      <script src="/static/admin/js/ie/html5shiv.js"></script>
-      <script src="/static/admin/js/ie/respond.min.js"></script>
-      <script src="/static/admin/js/ie/excanvas.js"></script>
-  <![endif]-->
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="{% static 'admin/css/bootstrap.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'admin/css/animate.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'admin/css/font-awesome.min.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'admin/css/font.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'admin/css/admin.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'admin/css/twined.css' %}" type="text/css" />
 
-  <script src="/static/admin/js/libs/jquery/jquery.min.js"></script>
-  <script src="/static/admin/js/libs/bootstrap/bootstrap.js"></script>
-  <script src="/static/admin/js/admin.js"></script>
-  <script src="/static/admin/js/admin.plugin.js"></script>
-  <script src="/static/admin/js/libs/slimscroll/jquery.slimscroll.min.js"></script>
+    <script type="text/javascript" src="{% static 'admin/js/libs/jquery/jquery.min.js' %}" charset="utf-8"></script>
+    <script type="text/javascript" src="{% static 'admin/js/libs/bootstrap/bootstrap.js' %}" charset="utf-8"></script>
+    <script type="text/javascript" src="{% static 'admin/js/admin.js' %}" charset="utf-8"></script>
+    <script type="text/javascript" src="{% static 'admin/js/admin.plugin.js' %}" charset="utf-8"></script>
+    <script type="text/javascript" src="{% static 'admin/js/libs/slimscroll/jquery.slimscroll.min.js' %}" charset="utf-8"></script>
 
 </head>
 <body>
