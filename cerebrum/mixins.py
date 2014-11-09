@@ -1,6 +1,8 @@
 import json
+import six
 
 from django.conf import settings
+from django.contrib import messages
 from django.contrib.auth import REDIRECT_FIELD_NAME
 from django.contrib.auth.views import redirect_to_login
 from django.core import serializers
@@ -12,6 +14,8 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
+from django.utils.encoding import force_text
+from django.utils.functional import curry, Promise
 
 
 class DispatchProtectionMixin(object):
@@ -469,3 +473,121 @@ class AjaxResponseMixin(object):
 
     def delete_ajax(self, request, *args, **kwargs):
         return self.get(request, *args, **kwargs)
+
+
+class _MessageAPIWrapper(object):
+    """
+    Wrap the django.contrib.messages.api module to automatically pass a given
+    request object as the first parameter of function calls.
+    """
+    API = set([
+        'add_message', 'get_messages',
+        'get_level', 'set_level',
+        'debug', 'info', 'success', 'warning', 'error',
+    ])
+
+    def __init__(self, request):
+        for name in self.API:
+            api_fn = getattr(messages.api, name)
+            setattr(self, name, curry(api_fn, request))
+
+
+class _MessageDescriptor(object):
+    """
+    A descriptor that binds the _MessageAPIWrapper to the view's
+    request.
+    """
+    def __get__(self, instance, owner):
+        return _MessageAPIWrapper(instance.request)
+
+
+class MessageMixin(object):
+    """
+    Add a `messages` attribute on the view instance that wraps
+    `django.contrib .messages`, automatically passing the current
+    request object.
+    """
+    messages = _MessageDescriptor()
+
+
+class FormValidMessageMixin(MessageMixin):
+    """
+    Mixin allows you to set static message which is displayed by
+    Django's messages framework through a static property on the class
+    or programmatically by overloading the get_form_valid_message method.
+    """
+    form_valid_message = None  # Default to None
+
+    def get_form_valid_message(self):
+        """
+        Validate that form_valid_message is set and is either a
+        unicode or str object.
+        """
+        if self.form_valid_message is None:
+            raise ImproperlyConfigured(
+                '{0}.form_valid_message is not set. Define '
+                '{0}.form_valid_message, or override '
+                '{0}.get_form_valid_message().'.format(self.__class__.__name__)
+            )
+
+        if not isinstance(self.form_valid_message,
+                          (six.string_types, six.text_type, Promise)):
+            raise ImproperlyConfigured(
+                '{0}.form_valid_message must be a str or unicode '
+                'object.'.format(self.__class__.__name__)
+            )
+
+        return force_text(self.form_valid_message)
+
+    def form_valid(self, form):
+        """
+        Call the super first, so that when overriding
+        get_form_valid_message, we have access to the newly saved object.
+        """
+        response = super(FormValidMessageMixin, self).form_valid(form)
+        self.messages.success(self.get_form_valid_message(),
+                              fail_silently=True, extra_tags="msg")
+        return response
+
+
+class FormInvalidMessageMixin(MessageMixin):
+    """
+    Mixin allows you to set static message which is displayed by
+    Django's messages framework through a static property on the class
+    or programmatically by overloading the get_form_invalid_message method.
+    """
+    form_invalid_message = None
+
+    def get_form_invalid_message(self):
+        """
+        Validate that form_invalid_message is set and is either a
+        unicode or str object.
+        """
+        if self.form_invalid_message is None:
+            raise ImproperlyConfigured(
+                '{0}.form_invalid_message is not set. Define '
+                '{0}.form_invalid_message, or override '
+                '{0}.get_form_invalid_message().'.format(
+                    self.__class__.__name__))
+
+        if not isinstance(self.form_invalid_message,
+                          (six.string_types, six.text_type, Promise)):
+            raise ImproperlyConfigured(
+                '{0}.form_invalid_message must be a str or unicode '
+                'object.'.format(self.__class__.__name__))
+
+        return force_text(self.form_invalid_message)
+
+    def form_invalid(self, form):
+        response = super(FormInvalidMessageMixin, self).form_invalid(form)
+        self.messages.error(self.get_form_invalid_message(),
+                            fail_silently=True)
+        return response
+
+
+class FormMessagesMixin(FormValidMessageMixin, FormInvalidMessageMixin):
+    """
+    Mixin is a shortcut to use both FormValidMessageMixin and
+    FormInvalidMessageMixin.
+    """
+    pass
