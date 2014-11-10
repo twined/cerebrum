@@ -26,6 +26,7 @@ var app = app || {};
         },
 
         clickSubmit: function(e) {
+            app.vent.trigger('posts:submit', e);
             form = this.checkForm();
             if (form['valid'] === false) {
                 e.preventDefault();
@@ -194,7 +195,7 @@ var app = app || {};
 
     app.Posts.ToggleTemplateLockView = Backbone.View.extend({
         el: '#toggleTemplateLock',
-        sourceEl: '.froala-element',
+        sourceEl: '#id_body',
 
         locked: true,
 
@@ -203,30 +204,70 @@ var app = app || {};
         },
 
         initialize: function() {
-            this.lockTemplate(this.sourceEl);
+            this.$sourceEl = $(this.sourceEl);
+            //this.$content = $(this.$sourceEl.html());
+            this.$content = this.getHTML();
+            this.setAllEditable(this.$content);
+            this.lockTemplate(this.$content);
+            app.vent.on('posts:submit', this.clean, this);
         },
 
-        lockTemplate: function(el) {
-            $('.locked', el).each(function() {
-                $(this).attr('contenteditable', 'false');
+        getHTML: function() {
+            return $(this.$sourceEl.editable("getHTML"));
+        },
+
+        setHTML: function(html) {
+            return $(this.$sourceEl.editable("setHTML", html));
+        },
+
+        clean: function(e) {
+            $content = this.getHTML();
+            $content.find('*').each(function() {
+                console.log('clean $content.each = ' + $(this).html());
+                if ($(this).attr('contenteditable')) {
+                    $(this).removeAttr('contenteditable');
+                }
             });
-            this.locked = true;
+            wrappedContent = $('<div>').append($content.clone()).html();
+            this.setHTML(wrappedContent);
         },
-
-        unlockTemplate: function(el) {
-            $('.locked', el).each(function() {
+        setAllEditable: function($content) {
+            $content.find('*').each(function() {
                 $(this).attr('contenteditable', 'true');
             });
+        },
+
+        lockTemplate: function($content) {
+            console.log('--------------------------------------');
+            console.log('$content was = ' + $('<div>').append($content.clone()).html());
+            $content.find('.locked').each(function() {
+                $(this).attr('contenteditable', 'false');
+                console.log('lock: ' + $(this).prop('tagName') + ' ' + $(this).attr('class'));
+            });
+            this.locked = true;
+            console.log('Template is locked!');
+            wrappedContent = $('<div>').append($content.clone()).html();
+            this.setHTML(wrappedContent);
+        },
+
+        unlockTemplate: function($content) {
+            $content.find('.locked').each(function() {
+                $(this).attr('contenteditable', 'true');
+                console.log('lock: ' + $(this).prop('tagName') + ' ' + $(this).attr('class'));
+            });
             this.locked = false;
+            console.log('Template is unlocked!');
+            wrappedContent = $('<div>').append($content.clone()).html();
+            this.setHTML(wrappedContent);
         },
 
         toggleTemplateLock: function(e) {
             if (this.locked) {
-                this.unlockTemplate(this.sourceEl);
+                this.unlockTemplate(this.$content);
                 this.$el.html('<i class="fa fa-lock"> </i> Lås mal');
 
             } else {
-                this.lockTemplate(this.sourceEl);
+                this.lockTemplate(this.$content);
                 this.$el.html('<i class="fa fa-lock"> </i> Lås opp mal');
             }
             e.preventDefault();
