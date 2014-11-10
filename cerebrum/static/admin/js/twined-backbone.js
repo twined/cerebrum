@@ -222,6 +222,9 @@ var app = app || {};
 
         clean: function(e) {
             $content = this.getHTML();
+            if ($content.attr('contenteditable')) {
+                $content.removeAttr('contenteditable');
+            }
             $content.find('*').each(function() {
                 console.log('clean $content.each = ' + $(this).html());
                 if ($(this).attr('contenteditable')) {
@@ -232,25 +235,30 @@ var app = app || {};
             this.setHTML(wrappedContent);
         },
         setAllEditable: function($content) {
+            $content.attr('contenteditable', 'true');
             $content.find('*').each(function() {
                 $(this).attr('contenteditable', 'true');
             });
+            wrappedContent = $('<div>').append($content.clone()).html();
+            this.setHTML(wrappedContent);
         },
 
         lockTemplate: function($content) {
-            console.log('--------------------------------------');
-            console.log('$content was = ' + $('<div>').append($content.clone()).html());
+            if ($content.hasClass('.locked')) {
+                $content.attr('contenteditable', 'false');
+            }
             $content.find('.locked').each(function() {
                 $(this).attr('contenteditable', 'false');
-                console.log('lock: ' + $(this).prop('tagName') + ' ' + $(this).attr('class'));
             });
             this.locked = true;
-            console.log('Template is locked!');
             wrappedContent = $('<div>').append($content.clone()).html();
             this.setHTML(wrappedContent);
         },
 
         unlockTemplate: function($content) {
+            if ($content.hasClass('.locked')) {
+                $content.attr('contenteditable', 'true');
+            }
             $content.find('.locked').each(function() {
                 $(this).attr('contenteditable', 'true');
                 console.log('lock: ' + $(this).prop('tagName') + ' ' + $(this).attr('class'));
