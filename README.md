@@ -32,6 +32,11 @@ Then add this to your `settings.py`
         'site_url': 'DOMAIN.COM',
     }
 
+    from django.core.urlresolvers import reverse_lazy
+    LOGIN_REDIRECT_URL = reverse_lazy('admin:dashboard')
+    LOGIN_URL = '/admin/login/'
+    LOGOUT_URL = '/admin/logout/'
+
 Templatetags
 ------------
 
