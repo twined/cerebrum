@@ -25,6 +25,7 @@ Then add this to your `settings.py`
 
     TEMPLATE_CONTEXT_PROCESSORS += (
         'cerebrum.context_processors.admin',
+        'django.core.context_processors.request',
     )
 
     ADMIN_CONFIG = {

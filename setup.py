@@ -14,4 +14,7 @@ setup(
     description='Admin for twined apps',
     long_description=open('README.md').read(),
     zip_safe=False,
+    install_requires=[
+        'six',
+    ]
 )
