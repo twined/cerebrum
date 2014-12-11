@@ -23,10 +23,18 @@ class Pinterest(InclusionTag):
         '''
 
         '''
+        has_http = False
+        if kwargs['image_url'][0:7].lower() == 'http://':
+            has_http = True
+
         page_url = context['request'].build_absolute_uri()
         parsed_uri = urlparse(page_url)
-        image_url = '%s://%s%s' % (
-            parsed_uri.scheme, parsed_uri.netloc, kwargs['image_url'])
+        if has_http:
+            image_url = kwargs['image_url']
+        else:
+            image_url = '%s://%s%s' % (
+                parsed_uri.scheme, parsed_uri.netloc, kwargs['image_url'])
+
         return {
             'class_names': kwargs['class_names'],
             'page_url': page_url,
