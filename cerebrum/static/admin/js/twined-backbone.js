@@ -114,7 +114,7 @@ var app = app || {};
             this.$slugEl = options.slug;
             this.$el.slugIt({
                 output: this.$slugEl,
-                map: { 'æ': 'ae', 'ø': 'oe', 'å': 'aa' },
+                map: { 'æ': 'ae', 'ø': 'oe', 'å': 'aa', '\'': '' },
                 space: '-'
             });
             app.vent.on('posts:header:change', this.checkSlug, this);
