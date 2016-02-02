@@ -114,8 +114,11 @@ var app = app || {};
             this.$slugEl = options.slug;
             this.$el.slugIt({
                 output: this.$slugEl,
-                map: { 'æ': 'ae', 'ø': 'oe', 'å': 'aa', '\'': '' },
-                space: '-'
+                map: { 'æ': 'ae', 'ø': 'oe', 'å': 'aa' },
+                space: '-',
+                after: function(slug) {
+                    return slug.replace(/'/g, '');
+                }
             });
             app.vent.on('posts:header:change', this.checkSlug, this);
         },
